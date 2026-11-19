@@ -28,7 +28,20 @@ qsub -N irace_ga-f -v METHOD=ga-f,E=2000,F=24 tuning/run_irace.sge     # cluster
 ```
 
 Output in `results/irace/METHOD/` (git-ignored): `irace.Rdata`, `final_elites.tsv`, `best_config.txt` (the `--param name=value` options of
-`vrp_experiments`), `trlog.txt`, `alarms.txt`, `failed/`.
+`vrp_experiments`), `trlog.txt`, `alarms.txt`, `env.txt` (CPU model of every stage), `failed/`.
+
+## Tuning on GitHub-hosted runners (staged)
+A hosted-runner job is capped at 6 h; one method needs about 5-9 h at F=24, E=2000 on 4 vCPU. The workflow `irace-tune` therefore runs a method
+as a chain of stages (`irace-stage.yml`, up to four jobs): each stage stops itself at the end of an iteration of irace (the only point irace can
+resume from; `run_irace.sh --window`), hands the saved state to the next stage as an artifact, and the next stage continues it (`--recover`).
+Start: Actions > irace-tune > Run workflow (method, optional `next` list of methods to run afterwards, E, F, window). The last job prints the
+results and a complete bundle (tar.gz, base64) to its log. Logs and artifacts are deleted after 90 days at the latest (public repositories), so
+the results are brought into the repository: `tuning/harvest.sh RUN_ID METHOD` writes `tuning/results/METHOD/` (committed).
+
+Hosted runners are not uniform: stages of one method can run on different CPUs (seen: Intel Xeon 6975P-C and AMD EPYC 7763), and a 4 vCPU runner
+has 2 physical cores with 2 threads each, so four parallel solver runs share two cores. `env.txt` records the CPU of every stage and `trlog.txt`
+the iterations reached per run. The target runner converts the time budget into an iteration budget per run (two short calibration runs), so the
+budget is equal in wall time, not in iterations.
 
 ## Notes for interpretation
 * Elite configurations are descriptive; the evidence for tuned vs default is the test-set comparison, not the training result.
