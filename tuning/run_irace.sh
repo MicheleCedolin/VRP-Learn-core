@@ -1,20 +1,24 @@
 #!/usr/bin/env bash
 # ONE irace run = the tuning of one method, on this machine (workstation, CI runner, or inside a cluster job).
 # usage: tuning/run_irace.sh METHOD [-E max_experiments] [-F seconds_per_100_customers] [-P parallel] [-T train_list] [-S seed]
-#                                   [-O outdir] [--check]
+#                                   [-O outdir] [--check] [--recover] [--window MINUTES]
 #   defaults: -E 2000  -F 24  -P 4  -T tuning/split/train.txt  -S 1  -O results/irace/METHOD
-#   --check : only check the scenario (the target runner is executed twice), no tuning
+#   --check   : only check the scenario (the target runner is executed twice), no tuning
+#   --recover : continue a run that was stopped (uses the last saved state OUTDIR/irace_good.Rdata or irace.Rdata)
+#   --window  : stop irace after MINUTES (at a saved state if one is due, else at the limit) and exit with status 75 so that the
+#               run can be continued with --recover in a later job (a hosted runner job is capped at 6 h).
 # Needs: cpp/build (see README), the instance files (tuning/fetch_data.sh), R with the irace package.
-# Writes OUTDIR/{params/, scenario.txt, irace.log, irace.Rdata, trlog.txt, alarms.txt, failed/, final_elites.tsv, best_config.txt}.
+# Writes OUTDIR/{params/, scenario.txt, env.txt, irace.log, irace.Rdata, trlog.txt, alarms.txt, failed/, final_elites.tsv, best_config.txt}.
 # Never submit this on a cluster login node (irace --check and the tuning execute the solver): use tuning/run_irace.sge.
 set -euo pipefail
 cd "$(dirname "${BASH_SOURCE[0]}")/.."; ROOT=$PWD
-METHOD=${1:?usage: tuning/run_irace.sh METHOD [-E n] [-F s] [-P n] [-T list] [-S seed] [-O dir] [--check]}; shift
-E=2000; F=24; P=4; TRAIN=tuning/split/train.txt; SEED=1; OUT=""; CHECK=0
+METHOD=${1:?usage: tuning/run_irace.sh METHOD [-E n] [-F s] [-P n] [-T list] [-S seed] [-O dir] [--check] [--recover] [--window min]}; shift
+E=2000; F=24; P=4; TRAIN=tuning/split/train.txt; SEED=1; OUT=""; CHECK=0; RECOVER=0; WINDOW=0
 while [ $# -gt 0 ]; do
   case "$1" in
     -E) E=$2; shift 2;; -F) F=$2; shift 2;; -P) P=$2; shift 2;; -T) TRAIN=$2; shift 2;; -S) SEED=$2; shift 2;; -O) OUT=$2; shift 2;;
-    --check) CHECK=1; shift;; *) echo "unknown option $1" >&2; exit 2;;
+    --check) CHECK=1; shift;; --recover) RECOVER=1; shift;; --window) WINDOW=$2; shift 2;;
+    *) echo "unknown option $1" >&2; exit 2;;
   esac
 done
 OUT=$(realpath -m "${OUT:-results/irace/$METHOD}"); TRAIN=$(realpath "$TRAIN")
@@ -26,6 +30,12 @@ while read -r f; do [ -s "$f" ] || { echo "training instance missing: $f" >&2; e
 mkdir -p "$OUT/params"
 cpp/build/vrp_experiments params --methods "$METHOD" --out "$OUT/params" > "$OUT/params/table.txt"
 [ -s "$OUT/params/$METHOD.txt" ] || { echo "$METHOD has no tunable parameters (see $OUT/params/table.txt)" >&2; exit 2; }
+RECFILE=""
+if [ $RECOVER = 1 ]; then                                     # continue from the last saved state of an earlier job
+  for c in "$OUT/irace_good.Rdata" "$OUT/irace.Rdata"; do [ -s "$c" ] && { RECFILE=$c; break; }; done
+  [ -n "$RECFILE" ] || { echo "--recover: no saved state in $OUT" >&2; exit 1; }
+  cp "$RECFILE" "$OUT/irace_resume.Rdata"; RECFILE="$OUT/irace_resume.Rdata"
+fi
 cat > "$OUT/scenario.txt" <<SCEN
 targetRunner = "$ROOT/tuning/target-runner"
 parameterFile = "$OUT/params/$METHOD.txt"
@@ -39,10 +49,44 @@ parallel = $P
 seed = $SEED
 deterministic = FALSE
 SCEN
+[ -n "$RECFILE" ] && echo "recoveryFile = \"$RECFILE\"" >> "$OUT/scenario.txt"
 export METHOD TIME_PER_100=$F VRP_ROOT=$ROOT TRLOG=$OUT/trlog.txt ALARMS=$OUT/alarms.txt FAILDIR=$OUT/failed
-echo "$(date -Is) $METHOD: maxExperiments $E, $F s per 100 customers, parallel $P, seed $SEED, train list $(wc -l < "$TRAIN") instances, host $(hostname)"
+{ echo "== $(date -Is) host $(hostname), stage start (recover=$RECOVER window=$WINDOW)"
+  lscpu 2>/dev/null | grep -E '^(Model name|Thread|Core|Socket|CPU\(s\)|CPU MHz)' || true
+  echo "$(nproc) usable cores; $(uname -sr); $(free -g 2>/dev/null | awk '/Mem:/{print $2" GB RAM"}')"; } >> "$OUT/env.txt"
+echo "$(date -Is) $METHOD: maxExperiments $E, $F s per 100 customers, parallel $P, seed $SEED, train list $(wc -l < "$TRAIN") instances, host $(hostname), recover $RECOVER, window $WINDOW min"
 if [ $CHECK = 1 ]; then Rscript tuning/irace_run.R "$OUT/scenario.txt" --check; exit $?; fi
-rc=0; Rscript tuning/irace_run.R "$OUT/scenario.txt" 2>&1 | tee "$OUT/irace.log" || rc=$?
+
+rc=0
+if [ "$WINDOW" -le 0 ]; then
+  [ $RECOVER = 1 ] || : > "$OUT/irace.log"
+  Rscript tuning/irace_run.R "$OUT/scenario.txt" 2>&1 | tee -a "$OUT/irace.log" || rc=$?
+else
+  [ $RECOVER = 1 ] || : > "$OUT/irace.log"
+  hard=$((WINDOW * 60)); t0=$SECONDS; last_save=$SECONDS; iter_len=0; last_mt=0
+  [ -f "$OUT/irace.Rdata" ] && last_mt=$(stat -c %Y "$OUT/irace.Rdata")
+  setsid Rscript tuning/irace_run.R "$OUT/scenario.txt" >> "$OUT/irace.log" 2>&1 & ipid=$!
+  tail -n 0 -F "$OUT/irace.log" 2>/dev/null & tpid=$!
+  stopped=0
+  while kill -0 "$ipid" 2>/dev/null; do
+    sleep 15
+    el=$((SECONDS - t0)); mt=0; [ -f "$OUT/irace.Rdata" ] && mt=$(stat -c %Y "$OUT/irace.Rdata")
+    if [ "$mt" != "$last_mt" ]; then                          # irace saved its state (end of an iteration)
+      last_mt=$mt; iter_len=$((SECONDS - last_save)); last_save=$SECONDS
+      sleep 10; cp "$OUT/irace.Rdata" "$OUT/irace_good.Rdata.tmp" && mv "$OUT/irace_good.Rdata.tmp" "$OUT/irace_good.Rdata"
+      echo "$(date -Is) [window] state saved after $((el / 60)) min (interval $((iter_len / 60)) min)" | tee -a "$OUT/env.txt"
+      if [ $((hard - el)) -lt $((iter_len * 115 / 100)) ]; then stopped=1; echo "[window] no time left for another interval: stopping at the saved state"; break; fi
+    fi
+    if [ $el -ge $hard ]; then stopped=1; echo "[window] limit of $WINDOW min reached: stopping (work since the last saved state is lost)"; break; fi
+  done
+  if [ $stopped = 1 ]; then
+    kill -TERM -- "-$ipid" 2>/dev/null || true; sleep 5; kill -KILL -- "-$ipid" 2>/dev/null || true
+    wait "$ipid" 2>/dev/null || true; rc=75
+  else
+    wait "$ipid" || rc=$?
+  fi
+  kill "$tpid" 2>/dev/null || true
+fi
 echo "$(date -Is) irace finished with status $rc"
 if [ -s "$OUT/trlog.txt" ]; then
   echo "runs of the target runner by status (trlog.txt):"

@@ -1,0 +1,90 @@
+name: irace-stage
+
+# One stage (one hosted-runner job, at most 6 h) of the tuning of ONE method.  Called by irace-tune.yml, one call per stage.
+# Stage s1 starts irace; every later stage restores the saved state of the previous stage (artifact) and continues it (--recover).
+# The stage stops itself after `window` minutes of irace time (status 75 = not finished) and uploads its state.
+on:
+  workflow_call:
+    inputs:
+      method:      { type: string, required: true }
+      experiments: { type: string, required: true }
+      f:           { type: string, required: true }
+      list:        { type: string, required: true }
+      window:      { type: string, required: true }
+      seed:        { type: string, required: true }
+      stage:       { type: string, required: true }     # s1, s2, ...
+      prev:        { type: string, required: false, default: "" }   # stage whose state is restored
+    outputs:
+      done:
+        value: ${{ jobs.stage.outputs.done }}
+
+jobs:
+  stage:
+    runs-on: ubuntu-latest        # public repository: 4 vCPU, 16 GB
+    timeout-minutes: 355          # the hosted-runner cap is 6 h
+    outputs:
+      done: ${{ steps.res.outputs.done }}
+    env:
+      M: ${{ inputs.method }}
+      E: ${{ inputs.experiments }}
+      F: ${{ inputs.f }}
+      LIST: ${{ inputs.list }}
+      W: ${{ inputs.window }}
+      SEED: ${{ inputs.seed }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build the C++ solver
+        run: |
+          cmake -S cpp -B cpp/build -DCMAKE_BUILD_TYPE=Release
+          cmake --build cpp/build -j"$(nproc)"
+
+      - name: Unit tests (first stage only)
+        if: inputs.stage == 's1'
+        run: ctest --test-dir cpp/build --output-on-failure
+
+      - name: Fetch the 167 instance files and check them against tuning/data.md5
+        run: tuning/fetch_data.sh
+
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+
+      - name: Install irace
+        run: Rscript -e 'install.packages("irace", repos = "https://packagemanager.posit.co/cran/__linux__/noble/latest")'
+
+      - name: Restore the state of the previous stage
+        if: inputs.prev != ''
+        uses: actions/download-artifact@v4
+        with:
+          name: state-${{ inputs.method }}-${{ inputs.prev }}
+          path: results/irace/${{ inputs.method }}
+
+      - name: Check the scenario (first stage only; irace runs the target runner twice)
+        if: inputs.stage == 's1'
+        run: |
+          if [ "$LIST" = smoke ]; then LF=tuning/split/smoke.txt; else LF=tuning/split/train.txt; fi
+          tuning/run_irace.sh "$M" -E "$E" -F "$F" -P 4 -T "$LF" -S "$SEED" -O results/check --check
+
+      - name: irace (this stage)
+        id: res
+        run: |
+          if [ "$LIST" = smoke ]; then LF=tuning/split/smoke.txt; else LF=tuning/split/train.txt; fi
+          REC=""; [ -n "${{ inputs.prev }}" ] && REC=--recover
+          set +e
+          tuning/run_irace.sh "$M" -E "$E" -F "$F" -P 4 -T "$LF" -S "$SEED" $REC --window "$W" -O "results/irace/$M"
+          rc=$?
+          set -e
+          if [ -s "results/irace/$M/final_elites.tsv" ]; then echo "done=true" >> "$GITHUB_OUTPUT"; else echo "done=false" >> "$GITHUB_OUTPUT"; fi
+          echo "run_irace.sh exit status $rc"
+          if [ "$rc" = 75 ]; then exit 0; fi
+          exit "$rc"
+
+      - name: Upload the state (needed by the next stage; also a 90-day copy of the results)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: state-${{ inputs.method }}-${{ inputs.stage }}
+          path: results/irace/${{ inputs.method }}
+          retention-days: 90
+          if-no-files-found: ignore

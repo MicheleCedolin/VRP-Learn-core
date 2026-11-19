@@ -1,0 +1,142 @@
+name: irace-tune
+
+# Real tuning of ONE method (then, optionally, the next ones) on hosted runners, split into stages of at most 6 h each.
+# One stage = one job of irace-stage.yml.  A method needs about 5-9 h at F=24, E=2000 on 4 vCPU, so normally 2 stages.
+# When the method is finished the last job prints the results and a complete bundle (tar.gz, base64) to the job log,
+# because the logs are the only way to read results from outside the browser; tuning/harvest.sh turns the bundle back into files.
+# Logs and artifacts are deleted after 90 days at the latest, so the results must be committed to the repository (tuning/results/).
+on:
+  workflow_dispatch:
+    inputs:
+      method:
+        description: "method id (see scripts/hpc/methods_main.txt)"
+        default: "ils-f"
+        type: string
+      next:
+        description: "methods to tune after this one, space separated (empty = stop after this method)"
+        default: ""
+        type: string
+      experiments:
+        description: "maxExperiments per method"
+        default: "2000"
+        type: string
+      f:
+        description: "seconds per 100 customers during tuning (F)"
+        default: "24"
+        type: string
+      list:
+        description: "training list: train (28 instances) or smoke (3 instances, for tests)"
+        default: "train"
+        type: choice
+        options: [train, smoke]
+      window:
+        description: "minutes of irace time per stage (the job cap is 360 min including set-up)"
+        default: "320"
+        type: string
+      seed:
+        description: "irace seed"
+        default: "1"
+        type: string
+
+permissions:
+  contents: read
+  actions: write      # only to start the next method
+
+jobs:
+  s1:
+    uses: ./.github/workflows/irace-stage.yml
+    with:
+      method: ${{ inputs.method }}
+      experiments: ${{ inputs.experiments }}
+      f: ${{ inputs.f }}
+      list: ${{ inputs.list }}
+      window: ${{ inputs.window }}
+      seed: ${{ inputs.seed }}
+      stage: s1
+      prev: ""
+  s2:
+    needs: s1
+    if: needs.s1.result == 'success' && needs.s1.outputs.done == 'false'
+    uses: ./.github/workflows/irace-stage.yml
+    with:
+      method: ${{ inputs.method }}
+      experiments: ${{ inputs.experiments }}
+      f: ${{ inputs.f }}
+      list: ${{ inputs.list }}
+      window: ${{ inputs.window }}
+      seed: ${{ inputs.seed }}
+      stage: s2
+      prev: "s1"
+  s3:
+    needs: s2
+    if: needs.s2.result == 'success' && needs.s2.outputs.done == 'false'
+    uses: ./.github/workflows/irace-stage.yml
+    with:
+      method: ${{ inputs.method }}
+      experiments: ${{ inputs.experiments }}
+      f: ${{ inputs.f }}
+      list: ${{ inputs.list }}
+      window: ${{ inputs.window }}
+      seed: ${{ inputs.seed }}
+      stage: s3
+      prev: "s2"
+  s4:
+    needs: s3
+    if: needs.s3.result == 'success' && needs.s3.outputs.done == 'false'
+    uses: ./.github/workflows/irace-stage.yml
+    with:
+      method: ${{ inputs.method }}
+      experiments: ${{ inputs.experiments }}
+      f: ${{ inputs.f }}
+      list: ${{ inputs.list }}
+      window: ${{ inputs.window }}
+      seed: ${{ inputs.seed }}
+      stage: s4
+      prev: "s3"
+
+  finish:
+    needs: [s1, s2, s3, s4]
+    if: always() && needs.s1.result != 'skipped'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      M: ${{ inputs.method }}
+      NEXT: ${{ inputs.next }}
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - name: Get the state of the last stage that ran
+        uses: actions/download-artifact@v4
+        with:
+          pattern: state-${{ inputs.method }}-*
+          path: states
+
+      - name: Print the results and the bundle
+        id: out
+        run: |
+          last=$(ls -d states/state-"$M"-s* | sort | tail -1); echo "last stage state: $last"
+          D=$last
+          if [ -s "$D/final_elites.tsv" ]; then echo "finished=true" >> "$GITHUB_OUTPUT"; else echo "finished=false" >> "$GITHUB_OUTPUT"; echo "NOT FINISHED: no final_elites.tsv (all stages used, or a stage failed)"; fi
+          echo "===== $M: final elite configurations (order of rank)"; cat "$D/final_elites.tsv" 2>/dev/null || true
+          echo "===== $M: best configuration"; cat "$D/best_config.txt" 2>/dev/null || true
+          echo "===== $M: runs of the target runner by status (all stages, including work lost at stage ends)"
+          awk '{c[$7]++; n++} END{for (s in c) printf "  %-10s %d\n", s, c[s]; printf "  total      %d\n", n}' "$D/trlog.txt" 2>/dev/null || true
+          echo "===== $M: wall seconds per run (mean, max)"
+          awk '$7=="ok"{w+=$11; if($11>m)m=$11; n++} END{if(n) printf "%.2f %.2f over %d runs\n", w/n, m, n}' "$D/trlog.txt" 2>/dev/null || true
+          echo "===== $M: alarms"; cat "$D/alarms.txt" 2>/dev/null || echo none
+          echo "===== $M: environment and stage log"; cat "$D/env.txt" 2>/dev/null || true
+          echo "===== $M: irace log (iterations, tests, elites)"
+          grep -E '^# (Iteration|Experiments|Number of|Stopped|Total|Best|Elite|Final|Initial|Race)|Best-so-far|Elite configurations|^# \S+ of \S+ (budget|experiments)|Mean value|End of iteration|Stopped because' "$D/irace.log" 2>/dev/null | head -150 || true
+          echo "===== $M: bundle size"
+          rm -rf bundle && mkdir bundle && cp -r "$D" "bundle/$M"
+          rm -rf "bundle/$M/failed" "bundle/$M/irace_resume.Rdata" "bundle/$M/irace_good.Rdata"
+          tar -C bundle -czf bundle.tgz "$M"; ls -l bundle.tgz; sha256sum bundle.tgz
+          echo "-----BEGIN IRACE BUNDLE $M-----"; base64 bundle.tgz; echo "-----END IRACE BUNDLE $M-----"
+
+      - name: Start the next method
+        if: steps.out.outputs.finished == 'true' && env.NEXT != ''
+        run: |
+          set -- $NEXT; first=$1; shift; rest="$*"
+          echo "starting $first (then: ${rest:-nothing})"
+          gh workflow run irace-tune.yml -R "${{ github.repository }}" --ref "${{ github.ref_name }}" \
+            -f method="$first" -f next="$rest" -f experiments="${{ inputs.experiments }}" -f f="${{ inputs.f }}" \
+            -f list="${{ inputs.list }}" -f window="${{ inputs.window }}" -f seed="${{ inputs.seed }}"
