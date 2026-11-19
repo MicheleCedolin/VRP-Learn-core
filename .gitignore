@@ -13,3 +13,4 @@ tuning/env.sh
 tuning/trlog.txt
 tuning/alarms.txt
 tuning/failed/
+results/homog/

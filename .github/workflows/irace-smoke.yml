@@ -1,16 +1,17 @@
 name: irace-smoke
 
-# Pipeline test of the irace tuning set-up (and, on request, the ga-f pilot).  Real tuning of the 18 methods runs on the cluster, not here.
+# Pipeline test of the irace tuning set-up, the ga-f pilot and the size-homogeneity check.  Real tuning of the 18 methods does not run here by default.
 #   mode smoke : 3 instances, 1 s per 100 customers, ~200 experiments on ga-f            (a few minutes)
-#   mode pilot : ga-f, 28 training instances, F=6, E=500                                 (about 35 minutes on 4 vCPU)
+#   mode pilot : ga-f, 28 training instances, F=6, E=500                                 (about 25 minutes on 4 vCPU)
+#   mode homog : 20 configurations x 10 X instances (5 of 100-199, 5 of 600-1000), F=6    (about 30 minutes on 4 vCPU)
 on:
   workflow_dispatch:
     inputs:
       mode:
-        description: "smoke or pilot"
+        description: "smoke, pilot or homog"
         default: "smoke"
         type: choice
-        options: [smoke, pilot]
+        options: [smoke, pilot, homog]
       method:
         description: "method id (see scripts/hpc/methods_main.txt)"
         default: "ga-f"
@@ -32,19 +33,27 @@ jobs:
       - name: Fetch the 167 instance files and check them against tuning/data.md5
         run: tuning/fetch_data.sh
 
+      - name: Size-homogeneity check (does the ranking of configurations depend on instance size?)
+        if: inputs.mode == 'homog'
+        run: tuning/homogeneity.sh "${{ inputs.method }}" -N 20 -F 6 -P 4 -O results/homog
+
       - uses: r-lib/actions/setup-r@v2
+        if: inputs.mode != 'homog'
         with:
           use-public-rspm: true
 
       - name: Install irace
+        if: inputs.mode != 'homog'
         run: Rscript -e 'install.packages("irace", repos = "https://packagemanager.posit.co/cran/__linux__/noble/latest")'
 
       - name: Check the scenario (irace runs the target runner twice)
+        if: inputs.mode != 'homog'
         run: |
           if [ "${{ inputs.mode }}" = pilot ]; then LIST=tuning/split/train.txt; F=6; else LIST=tuning/split/smoke.txt; F=1; fi
           tuning/run_irace.sh "${{ inputs.method }}" -E 200 -F "$F" -P 4 -T "$LIST" -O results/check --check
 
       - name: irace
+        if: inputs.mode != 'homog'
         run: |
           if [ "${{ inputs.mode }}" = pilot ]; then
             tuning/run_irace.sh "${{ inputs.method }}" -E 500 -F 6 -P 4 -T tuning/split/train.txt -O results/pilot
@@ -72,4 +81,5 @@ jobs:
             results/check/
             results/pilot/
             results/smoke/
+            results/homog/
           if-no-files-found: ignore
