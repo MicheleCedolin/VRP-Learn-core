@@ -1,0 +1,3 @@
+# Sources of the 167 instance files of the study (fetched by tuning/fetch_data.sh, verified against tuning/data.md5)
+vidalt/HGS-CVRP            https://github.com/vidalt/HGS-CVRP.git            1a927955cd2861a29d978f0d359d6e647db9319c   Instances/CVRP: 100 X, 14 CMT, 20 Golden   (MIT)
+STOM-Group/MDVRP-Instances https://github.com/STOM-Group/MDVRP-Instances.git 4a7738ccc11d872520e3820a9639c23b4026dda9   dat/: p01-p23, pr01-pr10                  (GPL-2.0; not redistributed here)

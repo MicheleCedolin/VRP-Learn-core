@@ -1,0 +1,62 @@
+#!/usr/bin/env bash
+# Guarded irace target runner for vrp_experiments: ONE run of one method with one configuration on one instance; prints the cost.
+#   irace calls:  target-runner <configuration id> <instance id> <seed> <instance> --name value --name value ...
+# Environment (exported by tuning/run_irace.sh):
+#   METHOD        method id, e.g. ga-f (required)
+#   TIME_PER_100  seconds per 100 customers (default 6)
+#   VRP_ROOT      repository root (default: parent directory of tuning/)
+#   GUARD_FACTOR, GUARD_EXTRA   the process is killed after GUARD_FACTOR x budget + GUARD_EXTRA seconds (defaults 3 and 30)
+#   TRLOG         one line per run: time method conf instid seed instance status cost seconds iters wall limit  (default tuning/trlog.txt)
+#   ALARMS        lines for results that look like a bug (default tuning/alarms.txt);  FAILDIR  solver logs of failed runs
+#   BKS_FILE      reference table instance,bks,proven_optimal (default data/bks/reference.csv)
+# A run that ends infeasible (fleet), is killed by the time guard or crashes costs 1e9 (+ its cost if it has one), and its status is in
+# TRLOG; run_irace.sh reports the number of such runs.  A cost below a PROVEN optimum is a bug: status below_bks, cost + 1e9, alarm.
+# A cost below an unproven best-known value only writes an alarm line.  A missing binary or instance aborts (exit 1).
+set -uo pipefail
+ROOT=${VRP_ROOT:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}
+METHOD=${METHOD:?set METHOD}
+BIN="$ROOT/cpp/build/vrp_experiments"; VRP="$ROOT/cpp/build/vrp"
+[ -x "$BIN" ] && [ -x "$VRP" ] || { echo "target-runner: $BIN or $VRP missing (build first)" >&2; exit 1; }
+[ $# -ge 4 ] || { echo "usage: target-runner CONF INSTID SEED INSTANCE [--name value ...]" >&2; exit 1; }
+CONF=$1; INSTID=$2; SEED=$3; INST=$4; shift 4
+ARGS=()
+while [ $# -ge 2 ]; do ARGS+=(--param "${1#--}=$2"); shift 2; done
+cd "$ROOT"
+[ -s "$INST" ] || { echo "target-runner: instance $INST is missing or empty" >&2; exit 1; }
+F=${TIME_PER_100:-6}
+N=$("$VRP" info "$INST" 2>/dev/null | cut -f3)
+case "$N" in ''|*[!0-9]*) echo "target-runner: cannot read the instance $INST" >&2; exit 1;; esac
+BUDGET=$(awk -v n="$N" -v f="$F" 'BEGIN{printf "%.3f", n*f/100}')
+LIMIT=$(awk -v b="$BUDGET" -v g="${GUARD_FACTOR:-3}" -v e="${GUARD_EXTRA:-30}" 'BEGIN{printf "%d", b*g+e+0.999}')
+TRLOG=${TRLOG:-$ROOT/tuning/trlog.txt}; ALARMS=${ALARMS:-$ROOT/tuning/alarms.txt}; FAILDIR=${FAILDIR:-$ROOT/tuning/failed}
+BKS_FILE=${BKS_FILE:-$ROOT/data/bks/reference.csv}
+OUT=$(mktemp -u "${TMPDIR:-/tmp}/irace_${METHOD}_${CONF}_${INSTID}_${SEED}_XXXXXX")
+T0=$(date +%s.%N)
+{ timeout -s KILL "$LIMIT" "$BIN" run --method "$METHOD" --instance "$INST" --seed "$SEED" --time-per-100 "$F" --out "$OUT" \
+    ${ARGS[@]+"${ARGS[@]}"} >"$OUT.log" 2>&1; } 2>/dev/null
+RC=$?
+WALL=$(awk -v a="$T0" -v b="$(date +%s.%N)" 'BEGIN{printf "%.2f", b-a}')
+json() { sed -n "s/.*\"$1\":\([^,}]*\).*/\1/p" "$OUT.json" 2>/dev/null | head -1; }
+STATUS=ok; PEN=0; COST=""; SECS=""; ITERS=""
+if [ $RC -eq 137 ] || [ $RC -eq 124 ]; then STATUS=timeout
+elif [ ! -s "$OUT.json" ]; then STATUS=crash
+else
+  COST=$(json cost); SECS=$(json seconds); ITERS=$(json iters)
+  case "$COST" in ''|*[!0-9.eE+-]*) STATUS=crash; COST="";; esac
+  if [ "$STATUS" = ok ] && [ "$(json feasible)" != true ]; then STATUS=infeasible; fi
+fi
+if [ "$STATUS" = ok ] && [ -s "$BKS_FILE" ]; then               # data / evaluation guard
+  REF=$(awk -F, -v n="$(basename "$INST" .vrp)" 'NR>1 && $1==n{print $2 "," $3}' "$BKS_FILE")
+  if [ -n "$REF" ]; then
+    BKS=${REF%,*}; PROVEN=${REF#*,}
+    if awk -v c="$COST" -v b="$BKS" 'BEGIN{exit !(c < b - 0.006)}'; then
+      printf '%s ALARM cost %s is below the best-known value %s (proven=%s): %s %s conf=%s seed=%s\n' "$(date -Is)" "$COST" "$BKS" "$PROVEN" "$METHOD" "$INST" "$CONF" "$SEED" >>"$ALARMS"
+      [ "$PROVEN" = yes ] && STATUS=below_bks
+    fi
+  fi
+fi
+[ "$STATUS" != ok ] && PEN=1000000000
+if [ "$STATUS" != ok ] && [ "$STATUS" != below_bks ]; then mkdir -p "$FAILDIR"; cp "$OUT.log" "$FAILDIR/$(basename "$OUT").log" 2>/dev/null; fi
+printf '%s %s %s %s %s %s %s %s %s %s %s %s\n' "$(date -Is)" "$METHOD" "$CONF" "$INSTID" "$SEED" "$INST" "$STATUS" "${COST:--}" "${SECS:--}" "${ITERS:--}" "$WALL" "$LIMIT" >>"$TRLOG"
+rm -f "$OUT.sol" "$OUT.trace.csv" "$OUT.json" "$OUT.ops.csv" "$OUT.log"
+awk -v c="${COST:-0}" -v p="$PEN" 'BEGIN{printf "%.6f\n", c + p}'

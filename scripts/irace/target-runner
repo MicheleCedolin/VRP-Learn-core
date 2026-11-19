@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# irace target runner: one run of one method with one configuration on one instance; prints the cost.
+#   irace calls:  target-runner <configuration id> <instance id> <seed> <instance> --name value --name value ...
+# Environment: METHOD (required, e.g. ga-f), TIME_PER_100 (seconds per 100 customers, default 6), VRP_ROOT (package directory,
+# default: two levels above this file).  The cost of a run that ends infeasible (fleet) is increased by 1e9.
+set -euo pipefail
+ROOT=${VRP_ROOT:-$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)}
+CONF=$1; INSTID=$2; SEED=$3; INST=$4; shift 4
+ARGS=()
+while [ $# -ge 2 ]; do ARGS+=(--param "${1#--}=$2"); shift 2; done
+OUT=$(mktemp -u "${TMPDIR:-/tmp}/irace_${METHOD:?set METHOD}_${CONF}_${INSTID}_${SEED}_XXXXXX")
+cd "$ROOT"
+if "$ROOT/cpp/build/vrp_experiments" run --method "$METHOD" --instance "$INST" --seed "$SEED" --time-per-100 "${TIME_PER_100:-6}" \
+     --out "$OUT" ${ARGS[@]+"${ARGS[@]}"} >"$OUT.log" 2>&1; then PEN=0; else PEN=1000000000; fi
+COST=$(sed -n 's/.*"cost":\([0-9.eE+-]*\).*/\1/p' "$OUT.json" 2>/dev/null || true)
+if [ -z "$COST" ]; then echo "target-runner: no result for $METHOD on $INST (see $OUT.log)" >&2; cat "$OUT.log" >&2; exit 1; fi
+rm -f "$OUT.sol" "$OUT.trace.csv" "$OUT.json" "$OUT.ops.csv" "$OUT.log"
+awk -v c="$COST" -v p="$PEN" 'BEGIN{printf "%.6f\n", c + p}'

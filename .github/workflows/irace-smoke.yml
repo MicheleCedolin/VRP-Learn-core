@@ -1,0 +1,64 @@
+name: irace-smoke
+
+# Pipeline test of the irace tuning set-up (and, on request, the ga-f pilot).  Real tuning of the 18 methods runs on the cluster, not here.
+#   mode smoke : 3 instances, 1 s per 100 customers, ~200 experiments on ga-f            (a few minutes)
+#   mode pilot : ga-f, 28 training instances, F=6, E=500                                 (about 35 minutes on 4 vCPU)
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "smoke or pilot"
+        default: "smoke"
+        type: choice
+        options: [smoke, pilot]
+      method:
+        description: "method id (see scripts/hpc/methods_main.txt)"
+        default: "ga-f"
+        type: string
+
+jobs:
+  irace:
+    runs-on: ubuntu-latest        # public repository: 4 vCPU, 16 GB
+    timeout-minutes: 330          # the hosted-runner cap is 6 h
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build the C++ solver and run the unit tests
+        run: |
+          cmake -S cpp -B cpp/build -DCMAKE_BUILD_TYPE=Release
+          cmake --build cpp/build -j"$(nproc)"
+          ctest --test-dir cpp/build --output-on-failure
+
+      - name: Fetch the 167 instance files and check them against tuning/data.md5
+        run: tuning/fetch_data.sh
+
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+
+      - name: Install irace
+        run: Rscript -e 'install.packages("irace", repos = "https://packagemanager.posit.co/cran/__linux__/noble/latest")'
+
+      - name: Check the scenario (irace runs the target runner twice)
+        run: |
+          if [ "${{ inputs.mode }}" = pilot ]; then LIST=tuning/split/train.txt; F=6; else LIST=tuning/split/smoke.txt; F=1; fi
+          tuning/run_irace.sh "${{ inputs.method }}" -E 200 -F "$F" -P 4 -T "$LIST" -O results/check --check
+
+      - name: irace
+        run: |
+          if [ "${{ inputs.mode }}" = pilot ]; then
+            tuning/run_irace.sh "${{ inputs.method }}" -E 500 -F 6 -P 4 -T tuning/split/train.txt -O results/pilot
+          else
+            tuning/run_irace.sh "${{ inputs.method }}" -E 200 -F 1 -P 4 -T tuning/split/smoke.txt -O results/smoke
+          fi
+
+      - name: Upload results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: irace-${{ inputs.mode }}-${{ inputs.method }}
+          path: |
+            results/check/
+            results/pilot/
+            results/smoke/
+          if-no-files-found: ignore

@@ -1,0 +1,22 @@
+# The twenty methods of the main comparison (decision of 2026-11-19, to be confirmed after tuning): the upgraded variant
+# where it was better at equal budget, otherwise the compact one.  Literature names: results/upgrade_check/README.md.
+sisr
+ils-f
+sa-f
+ta
+rtr
+tabu-f
+vns-f
+grasp
+msls
+alns-f
+lns
+ig-f
+ga-f
+aco
+grasppr-f
+scatter-f
+brkga-f
+pso
+de-f
+rkrs

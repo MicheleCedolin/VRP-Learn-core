@@ -1,0 +1,14 @@
+#!/bin/bash
+#$ -cwd
+#$ -j y
+#$ -S /bin/bash
+#$ -pe smp 16-30
+# Grid Engine job: one irace run = the tuning of one method; irace starts one solver process per slot.
+#   qsub -N irace_ga-f -v METHOD=ga-f,E=2000,F=24 tuning/run_irace.sge        (optional: SEED=, TRAIN=)
+# The name of the parallel environment ("smp") and the slot range differ between clusters: qconf -spl lists the environments.
+# R and the irace package: put whatever the cluster needs into tuning/env.sh (e.g. activating the micromamba environment); not in git.
+# Never run irace or irace --check on a login node.  Finished runs are not resumed: a killed job starts again (use a smaller E, or
+# one job per method as above, so that a lost job costs one method).
+[ -f tuning/env.sh ] && . tuning/env.sh
+exec tuning/run_irace.sh "${METHOD:?set METHOD with -v METHOD=...}" -E "${E:-2000}" -F "${F:-24}" -P "${NSLOTS:-16}" \
+     ${SEED:+-S "$SEED"} ${TRAIN:+-T "$TRAIN"}

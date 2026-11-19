@@ -1,0 +1,15 @@
+cpp/build/
+cpp/build-asan/
+build/
+data/external/
+results/**/*.log
+node_modules/
+ext/
+results/check/
+results/smoke/
+results/pilot/
+results/irace/
+tuning/env.sh
+tuning/trlog.txt
+tuning/alarms.txt
+tuning/failed/
