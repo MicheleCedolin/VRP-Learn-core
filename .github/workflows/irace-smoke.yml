@@ -52,6 +52,17 @@ jobs:
             tuning/run_irace.sh "${{ inputs.method }}" -E 200 -F 1 -P 4 -T tuning/split/smoke.txt -O results/smoke
           fi
 
+      - name: Print results (the artifact is also uploaded)
+        if: always()
+        run: |
+          for d in results/smoke results/pilot; do
+            [ -d "$d" ] || continue
+            echo "== $d: final elite configurations"; cat "$d/final_elites.tsv" 2>/dev/null || true
+            echo "== $d: runs by status"; awk '{c[$7]++} END{for (s in c) print s, c[s]}' "$d/trlog.txt" 2>/dev/null || true
+            echo "== $d: wall seconds per run / limit (mean, max)"; awk '$7=="ok"{w+=$11; if($11>m)m=$11; n++} END{if(n) printf "%.2f %.2f over %d runs\n", w/n, m, n}' "$d/trlog.txt" 2>/dev/null || true
+            echo "== $d: alarms"; cat "$d/alarms.txt" 2>/dev/null || echo none
+          done
+
       - name: Upload results
         if: always()
         uses: actions/upload-artifact@v4

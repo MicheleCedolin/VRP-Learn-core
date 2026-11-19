@@ -50,7 +50,7 @@ if [ -s "$OUT/trlog.txt" ]; then
 fi
 [ -s "$OUT/alarms.txt" ] && { echo "ALARMS ($(wc -l < "$OUT/alarms.txt")), see $OUT/alarms.txt:"; head -3 "$OUT/alarms.txt"; }
 if [ -s "$OUT/final_elites.tsv" ]; then                       # best configuration in the form of the --param options of vrp_experiments
-  awk -F'\t' 'NR==1{for(i=1;i<=NF;i++) h[i]=$i; next} NR==2{s=""; for(i=1;i<=NF;i++) if (h[i]!=".ID." && h[i]!=".PARENT.") s=s " --param " h[i] "=" $i; print substr(s,2)}' \
+  awk -F'\t' 'NR==1{for(i=1;i<=NF;i++) h[i]=$i; next} NR==2{s=""; for(i=1;i<=NF;i++) if (h[i] !~ /^\./) s=s " --param " h[i] "=" $i; print substr(s,2)}' \
     "$OUT/final_elites.tsv" > "$OUT/best_config.txt"
   echo "best configuration: $(cat "$OUT/best_config.txt")"
 fi
