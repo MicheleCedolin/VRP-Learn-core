@@ -63,27 +63,32 @@ if [ "$WINDOW" -le 0 ]; then
   Rscript tuning/irace_run.R "$OUT/scenario.txt" 2>&1 | tee -a "$OUT/irace.log" || rc=$?
 else
   [ $RECOVER = 1 ] || : > "$OUT/irace.log"
-  hard=$((WINDOW * 60)); t0=$SECONDS; last_save=$SECONDS; iter_len=0; last_mt=0
-  [ -f "$OUT/irace.Rdata" ] && last_mt=$(stat -c %Y "$OUT/irace.Rdata")
+  hard=$((WINDOW * 60)); t0=$SECONDS; t_prev=$SECONDS; iter_len=0; ncomp=0; armed=0
+  [ $RECOVER = 1 ] || armed=1
+  off=$(wc -l < "$OUT/irace.log")                              # this stage only reads the lines irace appends from here on
+  # irace saves its state often but can only resume at the end of an iteration, so the stop is placed there.
+  # An iteration ends with the line "Elite configurations"; in a resumed stage the replay of the old iterations is skipped (up to "Recovery completed").
+  count_comp() { awk -v off="$off" -v rec="$RECOVER" 'BEGIN{n=0; seen=(rec==0)} NR>off { if ($0 ~ /Recovery completed/) {seen=1; n=0} else if ($0 ~ /UTC: Elite configurations/) n++ } END{print (seen ? n : -1)}' "$OUT/irace.log"; }
   setsid Rscript tuning/irace_run.R "$OUT/scenario.txt" >> "$OUT/irace.log" 2>&1 & ipid=$!
   tail -n 0 -F "$OUT/irace.log" 2>/dev/null & tpid=$!
   stopped=0
   while kill -0 "$ipid" 2>/dev/null; do
     sleep 15
-    el=$((SECONDS - t0)); mt=0; [ -f "$OUT/irace.Rdata" ] && mt=$(stat -c %Y "$OUT/irace.Rdata")
-    if [ "$mt" != "$last_mt" ]; then                          # irace saved its state (end of an iteration)
-      last_mt=$mt; iter_len=$((SECONDS - last_save)); last_save=$SECONDS
-      sleep 10; cp "$OUT/irace.Rdata" "$OUT/irace_good.Rdata.tmp" && mv "$OUT/irace_good.Rdata.tmp" "$OUT/irace_good.Rdata"
-      echo "$(date -Is) [window] state saved after $((el / 60)) min (interval $((iter_len / 60)) min)" | tee -a "$OUT/env.txt"
-      if [ $((hard - el)) -lt $((iter_len * 115 / 100)) ]; then stopped=1; echo "[window] no time left for another interval: stopping at the saved state"; break; fi
+    el=$((SECONDS - t0)); c=$(count_comp)
+    if [ "$armed" = 0 ] && [ "$c" -ge 0 ]; then armed=1; t_prev=$SECONDS; fi
+    if [ "$armed" = 1 ] && [ "$c" -gt "$ncomp" ]; then          # an iteration has just ended and irace has saved its state
+      iter_len=$((SECONDS - t_prev)); t_prev=$SECONDS; ncomp=$c
+      sleep 10; [ -s "$OUT/irace.Rdata" ] && { cp "$OUT/irace.Rdata" "$OUT/irace_good.Rdata.tmp" && mv "$OUT/irace_good.Rdata.tmp" "$OUT/irace_good.Rdata"; }
+      echo "$(date -Is) [window] iteration done in this stage: #$c after $((el / 60)) min (this one took $((iter_len / 60)) min), state saved" | tee -a "$OUT/env.txt"
+      if [ $((hard - el)) -lt $((iter_len * 115 / 100)) ]; then stopped=1; echo "[window] no time left for another iteration: stopping at the saved state"; break; fi
     fi
-    if [ $el -ge $hard ]; then stopped=1; echo "[window] limit of $WINDOW min reached: stopping (work since the last saved state is lost)"; break; fi
+    if [ $el -ge $hard ]; then stopped=1; echo "[window] limit of $WINDOW min reached: stopping (the unfinished iteration is lost)"; break; fi
   done
-  if [ $stopped = 1 ]; then
+  if [ $stopped = 1 ] && kill -0 "$ipid" 2>/dev/null; then       # irace is still running: stop it, the next job continues
     kill -TERM -- "-$ipid" 2>/dev/null || true; sleep 5; kill -KILL -- "-$ipid" 2>/dev/null || true
     wait "$ipid" 2>/dev/null || true; rc=75
   else
-    wait "$ipid" || rc=$?
+    wait "$ipid" || rc=$?                                        # irace has ended by itself: its own status
   fi
   kill "$tpid" 2>/dev/null || true
 fi
