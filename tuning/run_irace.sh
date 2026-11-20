@@ -80,7 +80,12 @@ else
       iter_len=$((SECONDS - t_prev)); t_prev=$SECONDS; ncomp=$c
       sleep 10; [ -s "$OUT/irace.Rdata" ] && { cp "$OUT/irace.Rdata" "$OUT/irace_good.Rdata.tmp" && mv "$OUT/irace_good.Rdata.tmp" "$OUT/irace_good.Rdata"; }
       echo "$(date -Is) [window] iteration done in this stage: #$c after $((el / 60)) min (this one took $((iter_len / 60)) min), state saved" | tee -a "$OUT/env.txt"
-      if [ $((hard - el)) -lt $((iter_len * 115 / 100)) ]; then stopped=1; echo "[window] no time left for another iteration: stopping at the saved state"; break; fi
+      # time the next iteration needs: 1.15 x the last one, scaled by (budget of the next iteration / experiments the last one used) when that is above 1
+      # (the last iteration of a run often gets the left-over budget and is longer than the one before; a stop in the middle of an iteration loses its work)
+      scale=$(awk '/^# experimentsUsed:/{a=b; b=$3} /^# currentBudget:/{cb=$3} END{ if (a != "" && b != "" && cb != "" && b > a) { r=cb/(b-a); if (r < 1) r=1; print r } else print 1 }' "$OUT/irace.log")
+      need=$(awk -v n="$iter_len" -v r="$scale" 'BEGIN{printf "%d", n * 1.15 * r}')
+      echo "[window] next iteration needs about $((need / 60)) min (scale $scale), $(( (hard - el) / 60 )) min left" | tee -a "$OUT/env.txt"
+      if [ $((hard - el)) -lt "$need" ]; then stopped=1; echo "[window] no time left for another iteration: stopping at the saved state"; break; fi
     fi
     if [ $el -ge $hard ]; then stopped=1; echo "[window] limit of $WINDOW min reached: stopping (the unfinished iteration is lost)"; break; fi
   done
