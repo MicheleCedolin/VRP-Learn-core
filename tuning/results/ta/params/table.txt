@@ -1,0 +1,2 @@
+ta: 1 parameter(s)
+  th0          r  default 0.05     range [0.005, 0.3] log  start threshold / mean arc
