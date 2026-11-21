@@ -38,6 +38,12 @@ Start: Actions > irace-tune > Run workflow (method, optional `next` list of meth
 results and a complete bundle (tar.gz, base64) to its log. Logs and artifacts are deleted after 90 days at the latest (public repositories), so
 the results are brought into the repository: `tuning/harvest.sh RUN_ID METHOD` writes `tuning/results/METHOD/` (committed).
 
+Ranges: the parameter files come from the C++ table (`vrp_experiments params`); `tuning/ranges.tsv` (method, parameter, type, lower, upper) replaces
+the range of single parameters whose elites sat at a range edge in the first pass (2026-11-21). `run_irace.sh` rewrites those lines in every
+stage, checks that the default lies inside, and prints the changes to `env.txt`. The first-pass results of ils-f, sa-f, ta and tabu-f are kept in
+`tuning/results/METHOD-narrow/`; the wide-range runs write `tuning/results/METHOD/`. Several methods can run at the same time: start one
+`irace-tune` run per chain with disjoint `next` lists (hosted runners are separate machines; the Free plan allows 20 concurrent jobs).
+
 Hosted runners are not uniform: stages of one method can run on different CPUs (seen: Intel Xeon 6975P-C and AMD EPYC 7763), and a 4 vCPU runner
 has 2 physical cores with 2 threads each, so four parallel solver runs share two cores. `env.txt` records the CPU of every stage and `trlog.txt`
 the iterations reached per run. The target runner converts the time budget into an iteration budget per run (two short calibration runs), so the

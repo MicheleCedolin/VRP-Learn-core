@@ -1,0 +1,18 @@
+# Parameter ranges that replace the first proposals of methodParams(id) (cpp/src/methods.cpp) in irace runs.
+# run_irace.sh rewrites the lines of tuning/results/<method>/params/<method>.txt for the rows below; every other parameter keeps the
+# range of the C++ table; the defaults (<method>_default.txt) are not changed and must lie inside the new range.
+# Why: elites of the first pass (tuning/results/<method>-narrow/) sat at or near a range edge (irace-range-request.md, 2026-11-21).
+# columns (tab separated): method  parameter  type(i|r|i,log|r,log)  lower  upper
+ils-f	prange	i	1	12
+ils-f	failfactor	r,log	1	60
+ils-f	alpha	r	0.01	0.6
+sa-f	tfloor	r,log	0.0002	0.2
+ta	th0	r,log	0.005	3
+tabu-f	beta0	r	0.5	2.5
+tabu-f	tmin	i	2	50
+tabu-f	tspan	i	0	50
+tabu-f	h	i	1	30
+ga-f	mu	i	4	60
+ga-f	lambda	i	4	100
+ga-f	nclose	i	2	20
+ga-f	divafter	i,log	100	20000

@@ -30,6 +30,39 @@ while read -r f; do [ -s "$f" ] || { echo "training instance missing: $f" >&2; e
 mkdir -p "$OUT/params"
 cpp/build/vrp_experiments params --methods "$METHOD" --out "$OUT/params" > "$OUT/params/table.txt"
 [ -s "$OUT/params/$METHOD.txt" ] || { echo "$METHOD has no tunable parameters (see $OUT/params/table.txt)" >&2; exit 2; }
+# Wider ranges than the first proposals of the C++ table (tuning/ranges.tsv: method parameter type lower upper): the parameter file is
+# rewritten for these rows only; the default configuration is checked to lie inside the new range.  Applied again in every stage.
+if [ -s tuning/ranges.tsv ]; then
+  python3 - "$METHOD" tuning/ranges.tsv "$OUT/params" <<'PY' | tee -a "$OUT/env.txt"
+import sys
+m, rf, pdir = sys.argv[1:4]
+rows = {}
+for ln in open(rf):
+    if ln.startswith('#') or not ln.strip():
+        continue
+    a = ln.rstrip('\n').split('\t')
+    if a[0] == m:
+        rows[a[1]] = (a[2], a[3], a[4])
+if rows:
+    pf = f"{pdir}/{m}.txt"
+    names, vals = [l.split() for l in open(f"{pdir}/{m}_default.txt")][:2]
+    default = dict(zip(names, map(float, vals)))
+    out = []
+    for ln in open(pf):
+        t = ln.split()                                # name "--name " type (lo, hi)
+        if t and t[0] in rows:
+            typ, slo, shi = rows.pop(t[0])
+            lo, hi = float(slo), float(shi)
+            assert lo <= default[t[0]] <= hi, f"{m}.{t[0]}: default {default[t[0]]} outside ({slo}, {shi})"
+            assert 'log' not in typ or lo > 0, f"{m}.{t[0]}: log scale needs a positive lower bound"
+            assert typ.split(',')[0] == t[3].split(',')[0], f"{m}.{t[0]}: type {typ} differs from the table type {t[3]}"
+            print(f"[ranges] {m}.{t[0]}: {t[3]} {' '.join(t[4:])} -> {typ} ({slo}, {shi}) (default {default[t[0]]:g})")
+            ln = f'{t[0]:<12} "--{t[0]} "  {typ}  ({slo}, {shi})\n'
+        out.append(ln)
+    assert not rows, f"tuning/ranges.tsv names unknown parameters of {m}: {sorted(rows)}"
+    open(pf, 'w').writelines(out)
+PY
+fi
 RECFILE=""
 if [ $RECOVER = 1 ]; then                                     # continue from the last saved state of an earlier job
   for c in "$OUT/irace_good.Rdata" "$OUT/irace.Rdata"; do [ -s "$c" ] && { RECFILE=$c; break; }; done
