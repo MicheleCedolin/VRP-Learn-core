@@ -1,0 +1,1 @@
+--param beta0=1.2314 --param betadiv=3.104 --param tmin=14 --param tspan=13 --param h=6 --param kmax=30 --param divfactor=1.5885
