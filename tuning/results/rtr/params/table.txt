@@ -1,0 +1,2 @@
+rtr: 1 parameter(s)
+  dev0         r  default 0.02     range [0.002, 0.1] log  start band relative to the record

@@ -1,0 +1,12 @@
+targetRunner = "/home/runner/work/VRP-Learn-core/VRP-Learn-core/tuning/target-runner"
+parameterFile = "/home/runner/work/VRP-Learn-core/VRP-Learn-core/results/irace/rtr/params/rtr.txt"
+configurationsFile = "/home/runner/work/VRP-Learn-core/VRP-Learn-core/results/irace/rtr/params/rtr_default.txt"
+trainInstancesDir = ""
+trainInstancesFile = "/home/runner/work/VRP-Learn-core/VRP-Learn-core/tuning/split/train.txt"
+execDir = "/home/runner/work/VRP-Learn-core/VRP-Learn-core"
+logFile = "/home/runner/work/VRP-Learn-core/VRP-Learn-core/results/irace/rtr/irace.Rdata"
+maxExperiments = 2000
+parallel = 4
+seed = 1
+deterministic = FALSE
+recoveryFile = "/home/runner/work/VRP-Learn-core/VRP-Learn-core/results/irace/rtr/irace_resume.Rdata"
