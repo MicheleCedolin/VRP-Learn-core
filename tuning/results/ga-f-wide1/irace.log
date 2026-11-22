@@ -1,0 +1,331 @@
+irace 4.5.1 | R version 4.5.3 (2026-03-11) 
+# 2026-11-22 01:46:07 EST: Reading parameter file '~/vrp-irace-cluster/results/irace/ga-f/params/ga-f.txt'.
+# 2026-11-22 01:46:07 EST: Read 1 configuration(s) from file '~/vrp-irace-cluster/results/irace/ga-f/params/ga-f_default.txt'
+# 2026-11-22 01:46:07 EST: Initialization
+# Elitist race
+# Elitist new instances: 1
+# Elitist limit: 2
+# nbIterations: 4
+# minNbSurvival: 4
+# nbParameters: 7
+# seed: 1
+# confidence level: 0.95
+# budget: 2000
+# mu: 5
+# deterministic: FALSE
+
+# 2026-11-22 01:46:07 EST: Iteration 1 of 4
+# experimentsUsed: 0
+# remainingBudget: 2000
+# currentBudget: 500
+# nbConfigurations: 83
+# Markers:
+     x No test is performed.
+     c Configurations are discarded only due to capping.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+     . Alive configurations were already evaluated on this instance and nothing is discarded.
+     : All alive configurations are elite, but some need to be evaluated on this instance.
+
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|       Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+|x|          1|         83|         38|     26044.00000|         83|00:04:44|   NA|  NA|    NA|
+|x|          2|         83|         50|     13667.86926|        166|00:02:37|+0.42|0.71|0.5923|
+|x|          3|         83|         50|     9325.641492|        249|00:01:49|+0.25|0.50|0.6767|
+|x|          4|         83|         50|     7133.088678|        332|00:01:26|+0.17|0.38|0.5853|
+|-|          5|         52|         38|     5879.890370|        415|00:02:11|-0.01|0.19|0.8007|
+|-|          6|         31|         38|     9364.241975|        467|00:02:04|-0.02|0.15|0.8390|
+|=|          7|         31|         38|     8894.886675|        498|00:01:46|+0.03|0.17|0.8336|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+Best-so-far configuration:          38    mean value:      8894.886675
+Description of the best-so-far configuration:
+   .ID. mu lambda nelite nclose target repair divafter .PARENT.
+38   38  9     32      7     20 0.4124 0.6181      299       NA
+
+# 2026-11-22 02:02:46 EST: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+   mu lambda nelite nclose target repair divafter
+38  9     32      7     20 0.4124 0.6181      299
+25  8      7      2     10 0.4616 0.4462    17276
+11  7     46      4     18 0.3350 0.5400     1035
+28 12     37      9      2 0.2647 0.1337     1701
+# 2026-11-22 02:02:46 EST: Iteration 2 of 4
+# experimentsUsed: 498
+# remainingBudget: 1502
+# currentBudget: 500
+# nbConfigurations: 66
+# Markers:
+     x No test is performed.
+     c Configurations are discarded only due to capping.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+     . Alive configurations were already evaluated on this instance and nothing is discarded.
+     : All alive configurations are elite, but some need to be evaluated on this instance.
+
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|       Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+|x|          8|         66|        138|     26387.00000|         66|00:01:45|   NA|  NA|    NA|
+|x|          5|         66|        138|     13626.68260|        128|00:01:50|+0.04|0.52|0.8565|
+|x|          6|         66|        130|     17985.45507|        190|00:02:10|+0.28|0.52|0.7297|
+|x|          7|         66|        124|     15015.20687|        252|00:03:07|+0.26|0.45|0.7618|
+|-|          1|         34|        138|     17243.63690|        314|00:02:48|-0.07|0.15|0.9956|
+|=|          2|         34|        124|     14579.42766|        344|00:00:55|-0.05|0.12|0.9958|
+|=|          3|         34|        124|     12588.25028|        374|00:00:52|-0.05|0.10|0.8500|
+|=|          4|         34|        124|     11084.14777|        404|00:00:33|-0.04|0.09|0.7415|
+|=|          9|         34|         38|     11427.02297|        438|00:01:12|-0.06|0.06|0.7785|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+Best-so-far configuration:          38    mean value:      11427.02297
+Description of the best-so-far configuration:
+   .ID. mu lambda nelite nclose target repair divafter .PARENT.
+38   38  9     32      7     20 0.4124 0.6181      299       NA
+
+# 2026-11-22 02:18:03 EST: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+    mu lambda nelite nclose target repair divafter
+38   9     32      7     20 0.4124 0.6181      299
+145 11      4      2     10 0.3289 0.5265      296
+124  4      6      4      9 0.3790 0.7093      767
+138 14     16      4     18 0.3265 0.5056      604
+# 2026-11-22 02:18:03 EST: Iteration 3 of 4
+# experimentsUsed: 936
+# remainingBudget: 1064
+# currentBudget: 532
+# nbConfigurations: 56
+# Markers:
+     x No test is performed.
+     c Configurations are discarded only due to capping.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+     . Alive configurations were already evaluated on this instance and nothing is discarded.
+     : All alive configurations are elite, but some need to be evaluated on this instance.
+
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|       Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+|x|         10|         56|        175|     47940.00000|         56|00:01:30|   NA|  NA|    NA|
+|x|          3|         56|        175|     24290.59298|        108|00:01:22|-0.03|0.48|1.0487|
+|x|          5|         56|        175|     16482.51705|        160|00:01:57|-0.02|0.32|0.6769|
+|x|          9|         56|        175|     15896.38779|        212|00:01:38|-0.01|0.25|0.7403|
+|=|          8|         56|        161|     18045.31023|        264|00:01:26|+0.05|0.24|0.7596|
+|-|          7|         26|        161|     16050.88434|        316|00:02:56|-0.08|0.10|0.6918|
+|=|          2|         26|        161|     13942.40121|        338|00:00:54|-0.03|0.11|0.7177|
+|=|          1|         26|        161|     15458.47605|        360|00:01:19|+0.01|0.13|0.7272|
+|=|          6|         26|        161|     16706.64538|        382|00:01:04|+0.06|0.16|0.7199|
+|=|          4|         26|        161|     15091.52387|        404|00:00:28|+0.05|0.15|0.6507|
+|-|         11|          8|        161|     15940.20352|        430|00:01:48|+0.02|0.11|0.6330|
+|=|         12|          8|        161|     14935.83554|        438|00:00:37|+0.02|0.10|0.6567|
+|=|         13|          8|        161|     14639.71129|        446|00:00:36|+0.04|0.12|0.6693|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+Best-so-far configuration:         161    mean value:      14639.71129
+Description of the best-so-far configuration:
+    .ID. mu lambda nelite nclose target repair divafter .PARENT.
+161  161 14      7      5      7 0.4801 0.8316     9721      124
+
+# 2026-11-22 02:35:47 EST: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+    mu lambda nelite nclose target repair divafter
+161 14      7      5      7 0.4801 0.8316     9721
+166  7     47      4     19 0.3791 0.3497      553
+38   9     32      7     20 0.4124 0.6181      299
+192 15     21      5     17 0.3422 0.6142      516
+# 2026-11-22 02:35:47 EST: Iteration 4 of 4
+# experimentsUsed: 1382
+# remainingBudget: 618
+# currentBudget: 618
+# nbConfigurations: 47
+# Markers:
+     x No test is performed.
+     c Configurations are discarded only due to capping.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+     . Alive configurations were already evaluated on this instance and nothing is discarded.
+     : All alive configurations are elite, but some need to be evaluated on this instance.
+
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|       Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+|x|         14|         47|        203|     10923.00000|         47|00:01:23|   NA|  NA|    NA|
+|x|         13|         47|        199|     10997.21073|         90|00:01:40|+0.04|0.52|1.0424|
+|x|          6|         47|        203|     16231.53968|        133|00:01:28|+0.06|0.37|1.0118|
+|x|         11|         47|        209|     18293.35523|        176|00:02:19|+0.10|0.33|0.9335|
+|=|          8|         47|        199|     19913.08429|        219|00:00:59|+0.09|0.27|0.9236|
+|=|          4|         47|        199|     16686.80862|        262|00:00:45|+0.07|0.22|0.7789|
+|=|          9|         47|        199|     16322.69310|        305|00:01:25|+0.04|0.18|0.8221|
+|-|          1|         13|        199|     17528.85646|        348|00:01:41|-0.01|0.12|0.8108|
+|=|          7|         13|        199|     16262.81982|        357|00:00:51|-0.01|0.10|0.8373|
+|=|          5|         13|        199|     14723.17436|        366|00:00:31|-0.01|0.09|0.7519|
+|=|          2|         13|        199|     13502.13081|        375|00:00:36|-0.00|0.09|0.7490|
+|=|         10|         13|        199|     16388.20324|        384|00:00:22|+0.00|0.09|0.7670|
+|=|          3|         13|        199|     15176.89422|        393|00:00:24|+0.00|0.08|0.7081|
+|=|         12|         13|        199|     14371.52713|        402|00:00:35|-0.00|0.07|0.7217|
+|=|         15|         13|        199|     16311.69199|        415|00:00:21|+0.03|0.09|0.7106|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+Best-so-far configuration:         199    mean value:      16311.69199
+Description of the best-so-far configuration:
+    .ID. mu lambda nelite nclose target repair divafter .PARENT.
+199  199 12      5      3      7 0.4143 0.7978    16074      161
+
+# 2026-11-22 02:51:14 EST: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+    mu lambda nelite nclose target repair divafter
+199 12      5      3      7 0.4143 0.7978    16074
+209 14      7      6      5 0.4095 0.8341     6262
+161 14      7      5      7 0.4801 0.8316     9721
+205  8     11      4      8 0.4962 0.8712    10249
+# 2026-11-22 02:51:14 EST: Iteration 5 of 5
+# experimentsUsed: 1797
+# remainingBudget: 203
+# currentBudget: 203
+# nbConfigurations: 16
+# Markers:
+     x No test is performed.
+     c Configurations are discarded only due to capping.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+     . Alive configurations were already evaluated on this instance and nothing is discarded.
+     : All alive configurations are elite, but some need to be evaluated on this instance.
+
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|       Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+|x|         16|         16|        250|     31236.00000|         16|00:00:43|   NA|  NA|    NA|
+|x|         10|         16|        209|     39727.50000|         28|00:00:26|+0.24|0.62|0.7834|
+|x|         15|         16|        209|     40967.66667|         40|00:00:19|+0.28|0.52|0.7087|
+|x|          4|         16|        209|     30864.60756|         52|00:00:17|+0.19|0.39|0.5887|
+|=|         14|         16|        209|     26887.48605|         64|00:00:29|+0.06|0.25|0.6870|
+|=|         11|         16|        209|     26475.57171|         76|00:00:49|+0.10|0.25|0.6991|
+|-|         13|          9|        209|     24270.12159|         88|00:00:40|+0.02|0.16|0.7386|
+|=|          2|          9|        209|     21397.93366|         93|00:00:27|+0.01|0.13|0.7398|
+|=|          6|          9|        209|     21991.60770|         98|00:00:31|+0.01|0.12|0.7673|
+|=|          1|          9|        209|     22392.04693|        103|00:00:37|+0.04|0.14|0.7622|
+|=|          3|          9|        209|     20414.69593|        108|00:00:23|+0.06|0.14|0.7491|
+|=|          8|          9|        199|     20916.89441|        113|00:00:22|+0.02|0.10|0.7834|
+|=|          7|          9|        199|     19779.78920|        118|00:00:45|-0.01|0.07|0.8216|
+|=|         12|          9|        244|     18661.59078|        123|00:00:25|-0.02|0.05|0.8396|
+|=|          9|          9|        244|     18360.01806|        128|00:00:28|+0.01|0.07|0.8284|
+|=|          5|          9|        244|     17266.66476|        133|00:00:34|+0.01|0.07|0.7767|
+|=|         17|          9|        244|     16410.33709|        142|00:00:31|+0.01|0.06|0.7311|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+Best-so-far configuration:         244    mean value:      16410.33709
+Description of the best-so-far configuration:
+    .ID. mu lambda nelite nclose target repair divafter .PARENT.
+244  244 11      4      3      8 0.3858 0.7834     8649      199
+
+# 2026-11-22 03:00:09 EST: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+    mu lambda nelite nclose target repair divafter
+244 11      4      3      8 0.3858 0.7834     8649
+209 14      7      6      5 0.4095 0.8341     6262
+199 12      5      3      7 0.4143 0.7978    16074
+161 14      7      5      7 0.4801 0.8316     9721
+# 2026-11-22 03:00:09 EST: Iteration 6 of 6
+# experimentsUsed: 1939
+# remainingBudget: 61
+# currentBudget: 61
+# nbConfigurations: 7
+# Markers:
+     x No test is performed.
+     c Configurations are discarded only due to capping.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+     . Alive configurations were already evaluated on this instance and nothing is discarded.
+     : All alive configurations are elite, but some need to be evaluated on this instance.
+
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|       Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+|x|         18|          7|        244|     583.5552540|          7|00:00:28|   NA|  NA|    NA|
+|x|          5|          7|        244|     724.9602315|         10|00:00:26|+0.00|0.50|0.4286|
+|x|          4|          7|        244|     668.4502330|         13|00:00:17|+0.00|0.33|0.2857|
+|x|         15|          7|        244|     11387.58767|         16|00:00:20|-0.25|0.06|0.4774|
+|=|          3|          7|        244|     9238.307331|         19|00:00:23|-0.19|0.05|0.3721|
+|=|         14|          7|        244|     9518.922776|         22|00:00:21|-0.08|0.10|0.4275|
+|=|         16|          7|        209|     12622.20629|         25|00:00:32|-0.05|0.10|0.4818|
+|=|         11|          7|        199|     14097.00572|         28|00:00:39|+0.04|0.16|0.4879|
+|=|          6|          7|        244|     15506.72629|         31|00:00:27|+0.03|0.14|0.5424|
+|=|          7|          7|        244|     14563.92915|         34|00:00:39|+0.01|0.11|0.5961|
+|=|          8|          7|        244|     15641.11741|         37|00:00:23|+0.04|0.13|0.6105|
+|=|         10|          7|        244|     18375.19096|         40|00:00:18|+0.02|0.10|0.6338|
+|=|          2|          7|        244|     17061.07591|         43|00:00:24|+0.00|0.08|0.6448|
+|=|          9|          7|        244|     16852.28477|         46|00:00:31|+0.02|0.09|0.6421|
+|=|         13|          7|        244|     16465.78278|         49|00:00:25|+0.00|0.07|0.6781|
+|=|          1|          7|        244|     17060.60886|         52|00:00:30|+0.02|0.08|0.6829|
+|=|         12|          7|        254|     16270.36346|         55|00:00:24|+0.01|0.07|0.7033|
+|=|         17|          7|        254|     15516.95962|         58|00:00:29|+0.01|0.06|0.6644|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+Best-so-far configuration:         254    mean value:      15516.95962
+Description of the best-so-far configuration:
+    .ID. mu lambda nelite nclose target repair divafter .PARENT.
+254  254 10     11      3      6 0.3784 0.7125    18683      199
+
+# 2026-11-22 03:08:14 EST: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+    mu lambda nelite nclose target repair divafter
+254 10     11      3      6 0.3784 0.7125    18683
+244 11      4      3      8 0.3858 0.7834     8649
+199 12      5      3      7 0.4143 0.7978    16074
+161 14      7      5      7 0.4801 0.8316     9721
+# 2026-11-22 03:08:14 EST: Stopped because there is not enough budget left to race more than the minimum (4).
+# You may either increase the budget or set 'minNbSurvival' to a lower value.
+# Iteration: 7
+# nbIterations: 7
+# experimentsUsed: 1997
+# timeUsed: 0
+# remainingBudget: 3
+# currentBudget: 3
+# number of elites: 4
+# nbConfigurations: 4
+# Total CPU user time: 54162.25, CPU sys time: 114.555, Wall-clock time: 4927.556
+# 2026-11-22 03:08:15 EST: Starting post-selection:
+# Configurations selected: 254, 244, 199.
+# Pending instances: 0, 0, 0.
+# 2026-11-22 03:08:15 EST: seed: 1
+# Configurations: 3
+# Available experiments: 3
+# minSurvival: 1
+# Markers:
+     x No test is performed.
+     c Configurations are discarded only due to capping.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+     . Alive configurations were already evaluated on this instance and nothing is discarded.
+     : All alive configurations are elite, but some need to be evaluated on this instance.
+
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|       Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+|.|         16|          3|        254|     31365.00000|          0|00:00:00|   NA|  NA|    NA|
+|.|         14|          3|        254|     21168.00000|          0|00:00:00|-1.00|0.00|1.3289|
+|.|          4|          3|        254|     14297.14341|          0|00:00:00|-0.50|0.00|0.6652|
+|.|          7|          3|        254|     12242.54628|          0|00:00:00|-0.24|0.07|0.6226|
+|.|         13|          3|        254|     12001.52120|          0|00:00:00|-0.13|0.09|0.6385|
+|.|         17|          3|        254|     10452.78339|          0|00:00:00|-0.11|0.08|0.5146|
+|.|         12|          3|        254|     9511.349188|          0|00:00:00|+0.02|0.16|0.5033|
+|.|          6|          3|        254|     11659.80554|          0|00:00:00|+0.05|0.17|0.4953|
+|.|          1|          3|        254|     13248.71604|          0|00:00:00|+0.07|0.18|0.4930|
+|.|          5|          3|        254|     12010.48095|          0|00:00:00|+0.07|0.16|0.4463|
+|.|         15|          3|        254|     14876.80087|          0|00:00:00|+0.02|0.11|0.4943|
+|.|         11|          3|        254|     15680.56746|          0|00:00:00|-0.04|0.05|0.5320|
+|.|         10|          3|        254|     18171.52381|          0|00:00:00|+0.00|0.08|0.5290|
+|.|          8|          3|        254|     18760.48639|          0|00:00:00|-0.03|0.04|0.5427|
+|.|          3|          3|        254|     17552.53303|          0|00:00:00|-0.03|0.04|0.5052|
+|.|         18|          3|        254|     16492.22091|          0|00:00:00|-0.05|0.01|0.5263|
+|.|          9|          3|        254|     16353.73733|          0|00:00:00|-0.05|0.01|0.4938|
+|.|          2|          3|        254|     15516.95962|          0|00:00:00|-0.06|0.00|0.5049|
+|=|         19|          3|        199|     16125.97571|          3|00:00:24|-0.05|0.00|0.5109|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+Best-so-far configuration:         199    mean value:      16125.97571
+Description of the best-so-far configuration:
+    .ID. mu lambda nelite nclose target repair divafter .PARENT.
+199  199 12      5      3      7 0.4143 0.7978    16074      161
+
+# 2026-11-22 03:08:39 EST: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+    mu lambda nelite nclose target repair divafter
+199 12      5      3      7 0.4143 0.7978    16074
+244 11      4      3      8 0.3858 0.7834     8649
+254 10     11      3      6 0.3784 0.7125    18683
+# Total CPU user time: 54228.81, CPU sys time: 114.746, Wall-clock time: 4952.104
+final elite configurations written to ~/vrp-irace-cluster/results/irace/ga-f/final_elites.tsv 

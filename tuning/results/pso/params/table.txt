@@ -1,0 +1,7 @@
+pso: 6 parameter(s)
+  w0           r  default 0.9      range [0.5, 1.2]  start inertia
+  w1           r  default 0.4      range [0.1, 0.8]  final inertia
+  c1           r  default 1.5      range [0.5, 2.5]  cognitive coefficient
+  c2           r  default 1.5      range [0.5, 2.5]  social coefficient
+  vmax         r  default 0.5      range [0.1, 1]  velocity clamp
+  swarm        i  default 20       range [10, 50]  swarm size

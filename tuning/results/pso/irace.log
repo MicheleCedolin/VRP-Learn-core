@@ -1,0 +1,173 @@
+irace 4.5.1 | R version 4.5.3 (2026-03-11) 
+# 2026-11-22 04:01:04 EST: Reading parameter file '~/vrp-irace-cluster/results/irace/pso/params/pso.txt'.
+# 2026-11-22 04:01:04 EST: Read 1 configuration(s) from file '~/vrp-irace-cluster/results/irace/pso/params/pso_default.txt'
+# 2026-11-22 04:01:04 EST: Initialization
+# Elitist race
+# Elitist new instances: 1
+# Elitist limit: 2
+# nbIterations: 4
+# minNbSurvival: 4
+# nbParameters: 6
+# seed: 1
+# confidence level: 0.95
+# budget: 2000
+# mu: 5
+# deterministic: FALSE
+
+# 2026-11-22 04:01:04 EST: Iteration 1 of 4
+# experimentsUsed: 0
+# remainingBudget: 2000
+# currentBudget: 500
+# nbConfigurations: 83
+# Markers:
+     x No test is performed.
+     c Configurations are discarded only due to capping.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+     . Alive configurations were already evaluated on this instance and nothing is discarded.
+     : All alive configurations are elite, but some need to be evaluated on this instance.
+
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|       Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+|x|          1|         83|         38|     26386.00000|         83|00:07:51|   NA|  NA|    NA|
+|x|          2|         83|         57|     13913.97103|        166|00:03:04|+0.11|0.56|0.8221|
+|x|          3|         83|         67|     9500.593274|        249|00:01:49|+0.03|0.35|0.9551|
+|x|          4|         83|         67|     7264.302515|        332|00:01:18|+0.03|0.27|0.9116|
+|=|          5|         83|         67|     5984.715053|        415|00:02:08|+0.01|0.21|0.9547|
+|=|          6|         83|         67|     9543.929211|        498|00:04:56|-0.02|0.15|0.9585|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+Best-so-far configuration:          67    mean value:      9543.929211
+Description of the best-so-far configuration:
+   .ID.   w0     w1    c1     c2   vmax swarm .PARENT.
+67   67 0.51 0.5331 1.354 2.3816 0.9865    17       NA
+
+# 2026-11-22 04:22:12 EST: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+       w0     w1     c1     c2   vmax swarm
+67 0.5100 0.5331 1.3540 2.3816 0.9865    17
+38 0.5702 0.3089 1.7134 2.4598 0.8248    35
+4  0.9311 0.1011 1.0571 0.6160 0.6138    19
+50 0.7233 0.1120 1.9009 2.0223 0.5154    13
+# 2026-11-22 04:22:12 EST: Iteration 2 of 4
+# experimentsUsed: 498
+# remainingBudget: 1502
+# currentBudget: 500
+# nbConfigurations: 74
+# Markers:
+     x No test is performed.
+     c Configurations are discarded only due to capping.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+     . Alive configurations were already evaluated on this instance and nothing is discarded.
+     : All alive configurations are elite, but some need to be evaluated on this instance.
+
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|       Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+|x|          7|         74|          4|     6145.584412|         74|00:06:18|   NA|  NA|    NA|
+|x|          3|         74|        103|     3393.425139|        144|00:01:31|-0.30|0.35|1.2400|
+|x|          4|         74|        103|     2447.426838|        214|00:01:05|-0.15|0.23|0.7422|
+|x|          5|         74|        103|     2052.161431|        284|00:01:59|-0.09|0.19|0.7648|
+|=|          1|         74|        147|     6945.529144|        354|00:06:54|-0.01|0.19|0.7641|
+|=|          2|         74|        147|     6009.261622|        424|00:02:33|+0.04|0.20|0.7762|
+|=|          6|         74|        147|     9067.652819|        494|00:04:30|+0.05|0.18|0.7952|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+Best-so-far configuration:         147    mean value:      9067.652819
+Description of the best-so-far configuration:
+    .ID.     w0  w1    c1     c2   vmax swarm .PARENT.
+147  147 0.9602 0.1 0.951 0.5802 0.4373    14        4
+
+# 2026-11-22 04:47:07 EST: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+        w0     w1     c1     c2   vmax swarm
+147 0.9602 0.1000 0.9510 0.5802 0.4373    14
+4   0.9311 0.1011 1.0571 0.6160 0.6138    19
+67  0.5100 0.5331 1.3540 2.3816 0.9865    17
+84  0.5500 0.6845 0.9726 2.3753 0.7820    19
+# 2026-11-22 04:47:07 EST: Iteration 3 of 4
+# experimentsUsed: 992
+# remainingBudget: 1008
+# currentBudget: 504
+# nbConfigurations: 66
+# Markers:
+     x No test is performed.
+     c Configurations are discarded only due to capping.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+     . Alive configurations were already evaluated on this instance and nothing is discarded.
+     : All alive configurations are elite, but some need to be evaluated on this instance.
+
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|       Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+|x|          8|         66|        204|     26521.00000|         66|00:01:31|   NA|  NA|    NA|
+|x|          5|         66|        204|     13693.68260|        128|00:01:34|+0.00|0.50|0.4924|
+|x|          3|         66|        181|     9351.422933|        190|00:01:27|+0.05|0.37|0.6339|
+|x|          4|         66|        181|     7152.424759|        252|00:00:52|+0.04|0.28|0.4811|
+|=|          1|         66|         84|     10994.18884|        314|00:05:35|+0.07|0.26|0.5508|
+|=|          6|         66|         67|     13758.67689|        376|00:03:23|+0.02|0.18|0.6463|
+|=|          2|         66|         67|     11982.08218|        438|00:02:45|+0.02|0.16|0.6982|
+|=|          7|         66|         67|     11276.69932|        500|00:04:34|-0.03|0.10|0.7673|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+Best-so-far configuration:          67    mean value:      11276.69932
+Description of the best-so-far configuration:
+   .ID.   w0     w1    c1     c2   vmax swarm .PARENT.
+67   67 0.51 0.5331 1.354 2.3816 0.9865    17       NA
+
+# 2026-11-22 05:08:51 EST: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+        w0     w1     c1     c2   vmax swarm
+67  0.5100 0.5331 1.3540 2.3816 0.9865    17
+179 0.9283 0.1205 1.1292 0.8237 0.5434    22
+162 0.9534 0.1181 1.3216 0.7256 0.5227    17
+167 0.7879 0.2468 1.2760 0.9077 0.6031    26
+# 2026-11-22 05:08:51 EST: Iteration 4 of 4
+# experimentsUsed: 1492
+# remainingBudget: 508
+# currentBudget: 508
+# nbConfigurations: 60
+# Markers:
+     x No test is performed.
+     c Configurations are discarded only due to capping.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+     . Alive configurations were already evaluated on this instance and nothing is discarded.
+     : All alive configurations are elite, but some need to be evaluated on this instance.
+
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|       Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+|x|          9|         60|        248|     14190.00000|         60|00:02:29|   NA|  NA|    NA|
+|x|          6|         60|        225|     20723.00000|        116|00:03:20|-0.19|0.41|1.1878|
+|x|          4|         60|        225|     14000.47675|        172|00:00:55|-0.09|0.27|0.7237|
+|x|          2|         60|         67|     10856.48605|        228|00:02:20|-0.04|0.22|0.7711|
+|=|          7|         60|        240|     9918.868963|        284|00:05:04|-0.02|0.18|0.8148|
+|=|          5|         60|        240|     8410.118338|        340|00:01:29|-0.02|0.15|0.6743|
+|=|          1|         60|        240|     10986.53000|        396|00:05:00|+0.00|0.14|0.7126|
+|=|          8|         60|        240|     12936.33875|        452|00:01:25|+0.02|0.14|0.7320|
+|=|          3|         60|        240|     11570.74703|        508|00:01:22|-0.01|0.10|0.7788|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+Best-so-far configuration:         240    mean value:      11570.74703
+Description of the best-so-far configuration:
+    .ID.     w0     w1    c1     c2   vmax swarm .PARENT.
+240  240 0.9127 0.1292 1.083 0.8627 0.5289    25      179
+
+# 2026-11-22 05:32:20 EST: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+        w0     w1     c1     c2   vmax swarm
+240 0.9127 0.1292 1.0830 0.8627 0.5289    25
+255 0.8461 0.1977 1.2468 0.8493 0.5566    23
+67  0.5100 0.5331 1.3540 2.3816 0.9865    17
+167 0.7879 0.2468 1.2760 0.9077 0.6031    26
+# 2026-11-22 05:32:20 EST: Stopped because budget is exhausted
+# Iteration: 5
+# nbIterations: 4
+# experimentsUsed: 2000
+# timeUsed: 0
+# remainingBudget: 0
+# currentBudget: 508
+# number of elites: 4
+# nbConfigurations: 60
+# Total CPU user time: 77560.9, CPU sys time: 135.634, Wall-clock time: 5475.844
+final elite configurations written to ~/vrp-irace-cluster/results/irace/pso/final_elites.tsv 

@@ -1,0 +1,2 @@
+w cool react eta xi qmax s1 s2 s3 seg
+0.05 0.00193 0.1 0.025 0.4 100 33 9 13 100

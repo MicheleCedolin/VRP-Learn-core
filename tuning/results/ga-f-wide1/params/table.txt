@@ -1,0 +1,8 @@
+ga-f: 7 parameter(s)
+  mu           i  default 25       range [10, 60]  minimum sub-population size
+  lambda       i  default 40       range [10, 100]  generation size
+  nelite       i  default 4        range [1, 10]  elite individuals
+  nclose       i  default 5        range [2, 10]  closest individuals in the diversity measure
+  target       r  default 0.2      range [0.05, 0.5]  target share of feasible offspring
+  repair       r  default 0.5      range [0, 1]  repair probability
+  divafter     i  default 4000     range [500, 20000] log  diversification after this many offspring without improvement

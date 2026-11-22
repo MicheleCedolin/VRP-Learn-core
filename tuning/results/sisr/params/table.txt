@@ -1,0 +1,7 @@
+sisr: 6 parameter(s)
+  cbar         r  default 10       range [5, 20]  average number of removed customers
+  lmax         i  default 10       range [5, 20]  maximum string length
+  alpha        r  default 0.01     range [0.001, 0.5] log  split-string preservation probability
+  blink        r  default 0.01     range [0, 0.1]  blink rate of the insertion
+  t0           r  default 0.45     range [0.05, 2] log  start temperature / mean arc
+  tf           r  default 0.0045   range [0.0005, 0.05] log  final temperature / mean arc

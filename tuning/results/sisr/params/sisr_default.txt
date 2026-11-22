@@ -1,0 +1,2 @@
+cbar lmax alpha blink t0 tf
+10 10 0.01 0.01 0.45 0.0045

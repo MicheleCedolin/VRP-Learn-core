@@ -1,0 +1,1 @@
+--param w=0.0966 --param cool=0.0101 --param react=0.1355 --param eta=0.0633 --param xi=0.3906 --param qmax=83 --param s1=23.2075 --param s2=38.4836 --param s3=35.1109 --param seg=130

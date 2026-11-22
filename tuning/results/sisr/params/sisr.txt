@@ -1,0 +1,6 @@
+cbar         "--cbar "  r  (5, 20)
+lmax         "--lmax "  i  (5, 20)
+alpha        "--alpha "  r,log  (0.001, 0.5)
+blink        "--blink "  r  (0, 0.1)
+t0           "--t0 "  r,log  (0.05, 2)
+tf           "--tf "  r,log  (0.0005, 0.05)

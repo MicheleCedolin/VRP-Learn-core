@@ -1,0 +1,1 @@
+--param cbar=12.6242 --param lmax=19 --param alpha=0.0036 --param blink=0.0113 --param t0=1.1596 --param tf=0.0058

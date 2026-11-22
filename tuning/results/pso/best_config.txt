@@ -1,0 +1,1 @@
+--param w0=0.9127 --param w1=0.1292 --param c1=1.083 --param c2=0.8627 --param vmax=0.5289 --param swarm=25
