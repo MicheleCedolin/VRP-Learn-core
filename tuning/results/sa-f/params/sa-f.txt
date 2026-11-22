@@ -1,0 +1,2 @@
+resetfactor  "--resetfactor "  r,log  (2, 100)
+tfloor       "--tfloor "  r,log  (0.0002, 0.2)
