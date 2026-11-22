@@ -14,6 +14,6 @@ tabu-f	tmin	i	2	50
 tabu-f	tspan	i	0	50
 tabu-f	h	i	1	30
 ga-f	mu	i	4	60
-ga-f	lambda	i	4	100
+ga-f	lambda	i	1	100
 ga-f	nclose	i	2	20
 ga-f	divafter	i,log	100	20000
