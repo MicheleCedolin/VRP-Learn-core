@@ -1,0 +1,8 @@
+tabu-f: 7 parameter(s)
+  beta0        r  default 1.5      range [1, 2.5]  sparsification factor
+  betadiv      r  default 3        range [2, 5]  sparsification factor during diversification
+  tmin         i  default 5        range [2, 15]  minimum tabu tenure
+  tspan        i  default 5        range [0, 15]  tenure = tmin + U{0..tspan}
+  h            i  default 10       range [5, 30]  penalty update period
+  kmax         i  default 40       range [10, 60]  maximum neighbours per customer
+  divfactor    r  default 2        range [0.5, 10] log  diversification after divfactor x n iterations without improvement
