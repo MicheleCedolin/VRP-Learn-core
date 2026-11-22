@@ -1,0 +1,3 @@
+ig-f: 2 parameter(s)
+  frac         r  default 0.1      range [0.02, 0.3]  removed fraction
+  temp         r  default 0.05     range [0.001, 0.5] log  constant temperature / mean arc
