@@ -1,0 +1,3 @@
+alpha        "--alpha "  r  (0.05, 0.5)
+elite        "--elite "  i  (4, 20)
+pevo         "--pevo "  r  (0, 0.5)

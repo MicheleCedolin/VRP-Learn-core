@@ -1,0 +1,4 @@
+grasppr-f: 3 parameter(s)
+  alpha        r  default 0.2      range [0.05, 0.5]  skip probability of the randomised savings
+  elite        i  default 10       range [4, 20]  elite pool size
+  pevo         r  default 0.1      range [0, 0.5]  probability of an elite-elite relinking
