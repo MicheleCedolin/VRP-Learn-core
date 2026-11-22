@@ -1,0 +1,279 @@
+irace 4.5.1 | R version 4.6.2 (2026-10-29) 
+# 2026-11-21 19:47:21 UTC: Reading parameter file '/home/runner/work/VRP-Learn-core/VRP-Learn-core/results/irace/ils-f/params/ils-f.txt'.
+# 2026-11-21 19:47:21 UTC: Read 1 configuration(s) from file '/home/runner/work/VRP-Learn-core/VRP-Learn-core/results/irace/ils-f/params/ils-f_default.txt'
+# 2026-11-21 19:47:21 UTC: Initialization
+# Elitist race
+# Elitist new instances: 1
+# Elitist limit: 2
+# nbIterations: 4
+# minNbSurvival: 4
+# nbParameters: 4
+# seed: 1
+# confidence level: 0.95
+# budget: 2000
+# mu: 5
+# deterministic: FALSE
+
+# 2026-11-21 19:47:21 UTC: Iteration 1 of 4
+# experimentsUsed: 0
+# remainingBudget: 2000
+# currentBudget: 500
+# nbConfigurations: 83
+# Markers:
+     x No test is performed.
+     c Configurations are discarded only due to capping.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+     . Alive configurations were already evaluated on this instance and nothing is discarded.
+     : All alive configurations are elite, but some need to be evaluated on this instance.
+
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|       Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+|x|          1|         83|          7|     26164.00000|         83|00:31:40|   NA|  NA|    NA|
+|x|          2|         83|         64|     13747.70272|        166|00:17:21|+0.17|0.58|0.7473|
+|x|          3|         83|         64|     9378.863798|        249|00:06:57|+0.08|0.39|0.5784|
+|x|          4|         83|         64|     7173.005408|        332|00:04:52|+0.04|0.28|0.7023|
+|=|          5|         83|         64|     5911.677368|        415|00:09:03|+0.03|0.23|0.5696|
+|=|          6|         83|         61|     9470.524031|        498|00:25:26|+0.05|0.21|0.6268|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+Best-so-far configuration:          61    mean value:      9470.524031
+Description of the best-so-far configuration:
+   .ID. pmin prange failfactor  alpha .PARENT.
+61   61    4      6    13.6253 0.0534       NA
+
+# 2026-11-21 21:22:42 UTC: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+   pmin prange failfactor  alpha
+61    4      6    13.6253 0.0534
+31    4      9    59.3431 0.2470
+69    4     11     2.0641 0.4176
+64    4     10    22.7309 0.1272
+# 2026-11-21 21:22:42 UTC: Iteration 2 of 4
+# experimentsUsed: 498
+# remainingBudget: 1502
+# currentBudget: 500
+# nbConfigurations: 74
+# Markers:
+     x No test is performed.
+     c Configurations are discarded only due to capping.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+     . Alive configurations were already evaluated on this instance and nothing is discarded.
+     : All alive configurations are elite, but some need to be evaluated on this instance.
+
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|       Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+|x|          7|         74|         84|     6123.176389|         74|00:29:48|   NA|  NA|    NA|
+|x|          1|         74|         64|     16170.79221|        144|00:28:19|-0.02|0.49|1.0394|
+|x|          3|         74|         64|     10994.25679|        214|00:05:56|-0.01|0.33|0.6753|
+|x|          5|         74|         64|     8462.283894|        284|00:07:37|-0.01|0.24|0.5021|
+|=|          6|         74|        121|     12216.42712|        354|00:23:02|-0.00|0.20|0.6037|
+|=|          2|         74|         61|     10402.21639|        424|00:13:47|+0.02|0.18|0.6617|
+|=|          4|         74|         61|     8995.532657|        494|00:04:12|+0.01|0.15|0.7278|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+Best-so-far configuration:          61    mean value:      8995.532657
+Description of the best-so-far configuration:
+   .ID. pmin prange failfactor  alpha .PARENT.
+61   61    4      6    13.6253 0.0534       NA
+
+# 2026-11-21 23:15:28 UTC: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+   pmin prange failfactor  alpha
+61    4      6    13.6253 0.0534
+31    4      9    59.3431 0.2470
+64    4     10    22.7309 0.1272
+69    4     11     2.0641 0.4176
+# 2026-11-21 23:15:28 UTC: Iteration 3 of 4
+# experimentsUsed: 992
+# remainingBudget: 1008
+# currentBudget: 504
+# nbConfigurations: 66
+# Markers:
+     x No test is performed.
+     c Configurations are discarded only due to capping.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+     . Alive configurations were already evaluated on this instance and nothing is discarded.
+     : All alive configurations are elite, but some need to be evaluated on this instance.
+
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|       Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+irace 4.5.1 | R version 4.6.2 (2026-10-29) 
+# 2026-11-21 23:17:05 UTC: Reading parameter file '/home/runner/work/VRP-Learn-core/VRP-Learn-core/results/irace/ils-f/params/ils-f.txt'.
+# 2026-11-21 23:17:05 UTC: Recovering from file: '/home/runner/work/VRP-Learn-core/VRP-Learn-core/results/irace/ils-f/irace_resume.Rdata'
+# 2026-11-21 23:17:05 UTC: Read 1 configuration(s) from file '/home/runner/work/VRP-Learn-core/VRP-Learn-core/results/irace/ils-f/params/ils-f_default.txt'
+# 2026-11-21 23:17:05 UTC: Initialization
+# Elitist race
+# Elitist new instances: 1
+# Elitist limit: 2
+# nbIterations: 4
+# minNbSurvival: 4
+# nbParameters: 4
+# seed: 1
+# confidence level: 0.95
+# budget: 2000
+# mu: 5
+# deterministic: FALSE
+
+# 2026-11-21 23:17:05 UTC: Iteration 1 of 4
+# experimentsUsed: 0
+# remainingBudget: 2000
+# currentBudget: 500
+# nbConfigurations: 83
+# Markers:
+     x No test is performed.
+     c Configurations are discarded only due to capping.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+     . Alive configurations were already evaluated on this instance and nothing is discarded.
+     : All alive configurations are elite, but some need to be evaluated on this instance.
+
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|       Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+|x|          1|         83|          7|     26164.00000|         83|00:00:00|   NA|  NA|    NA|
+|x|          2|         83|         64|     13747.70272|        166|00:00:00|+0.17|0.58|0.7473|
+|x|          3|         83|         64|     9378.863798|        249|00:00:00|+0.08|0.39|0.5784|
+|x|          4|         83|         64|     7173.005408|        332|00:00:00|+0.04|0.28|0.7023|
+|=|          5|         83|         64|     5911.677368|        415|00:00:00|+0.03|0.23|0.5696|
+|=|          6|         83|         61|     9470.524031|        498|00:00:00|+0.05|0.21|0.6268|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+Best-so-far configuration:          61    mean value:      9470.524031
+Description of the best-so-far configuration:
+   .ID. pmin prange failfactor  alpha .PARENT.
+61   61    4      6    13.6253 0.0534       NA
+
+# 2026-11-21 23:17:05 UTC: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+   pmin prange failfactor  alpha
+61    4      6    13.6253 0.0534
+31    4      9    59.3431 0.2470
+69    4     11     2.0641 0.4176
+64    4     10    22.7309 0.1272
+# 2026-11-21 23:17:06 UTC: Iteration 2 of 4
+# experimentsUsed: 498
+# remainingBudget: 1502
+# currentBudget: 500
+# nbConfigurations: 74
+# Markers:
+     x No test is performed.
+     c Configurations are discarded only due to capping.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+     . Alive configurations were already evaluated on this instance and nothing is discarded.
+     : All alive configurations are elite, but some need to be evaluated on this instance.
+
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|       Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+|x|          7|         74|         84|     6123.176389|         74|00:00:00|   NA|  NA|    NA|
+|x|          1|         74|         64|     16170.79221|        144|00:00:00|-0.02|0.49|1.0394|
+|x|          3|         74|         64|     10994.25679|        214|00:00:00|-0.01|0.33|0.6753|
+|x|          5|         74|         64|     8462.283894|        284|00:00:00|-0.01|0.24|0.5021|
+|=|          6|         74|        121|     12216.42712|        354|00:00:00|-0.00|0.20|0.6037|
+|=|          2|         74|         61|     10402.21639|        424|00:00:00|+0.02|0.18|0.6617|
+# 2026-11-21 23:17:06 UTC: Recovery completed.
+|=|          4|         74|         61|     8995.532657|        494|00:00:00|+0.01|0.15|0.7278|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+Best-so-far configuration:          61    mean value:      8995.532657
+Description of the best-so-far configuration:
+   .ID. pmin prange failfactor  alpha .PARENT.
+61   61    4      6    13.6253 0.0534       NA
+
+# 2026-11-21 23:17:06 UTC: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+   pmin prange failfactor  alpha
+61    4      6    13.6253 0.0534
+31    4      9    59.3431 0.2470
+64    4     10    22.7309 0.1272
+69    4     11     2.0641 0.4176
+# 2026-11-21 23:17:06 UTC: Iteration 3 of 4
+# experimentsUsed: 992
+# remainingBudget: 1008
+# currentBudget: 504
+# nbConfigurations: 66
+# Markers:
+     x No test is performed.
+     c Configurations are discarded only due to capping.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+     . Alive configurations were already evaluated on this instance and nothing is discarded.
+     : All alive configurations are elite, but some need to be evaluated on this instance.
+
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|       Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+|x|          8|         66|        162|     26402.00000|         66|00:07:21|   NA|  NA|    NA|
+|x|          3|         66|        162|     13521.59298|        128|00:05:13|+0.00|0.50|0.4924|
+|x|          2|         66|        186|     9453.575057|        190|00:12:16|-0.01|0.33|0.6616|
+|x|          5|         66|        186|     7306.772595|        252|00:06:50|-0.01|0.24|0.4949|
+|=|          4|         66|        186|     5956.504123|        314|00:03:43|+0.01|0.21|0.5671|
+|=|          7|         66|        186|     5988.017505|        376|00:26:59|-0.01|0.16|0.6963|
+|=|          1|         66|         64|     8879.853036|        438|00:25:22|+0.01|0.15|0.7314|
+|=|          6|         66|        196|     11161.16575|        500|00:22:13|+0.02|0.14|0.7665|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+Best-so-far configuration:         196    mean value:      11161.16575
+Description of the best-so-far configuration:
+    .ID. pmin prange failfactor  alpha .PARENT.
+196  196    4      5    13.8138 0.0529       61
+
+# 2026-11-22 01:07:06 UTC: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+    pmin prange failfactor  alpha
+196    4      5    13.8138 0.0529
+192    4      9    45.6575 0.2309
+64     4     10    22.7309 0.1272
+61     4      6    13.6253 0.0534
+# 2026-11-22 01:07:06 UTC: Iteration 4 of 4
+# experimentsUsed: 1492
+# remainingBudget: 508
+# currentBudget: 508
+# nbConfigurations: 60
+# Markers:
+     x No test is performed.
+     c Configurations are discarded only due to capping.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+     . Alive configurations were already evaluated on this instance and nothing is discarded.
+     : All alive configurations are elite, but some need to be evaluated on this instance.
+
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|       Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+|x|          9|         60|        258|     14147.00000|         60|00:10:12|   NA|  NA|    NA|
+|x|          3|         60|        258|     7394.092978|        116|00:04:42|+0.00|0.50|0.4917|
+|x|          4|         60|        258|     5114.538730|        172|00:03:19|-0.09|0.27|0.7168|
+|x|          5|         60|        258|     4052.495350|        228|00:06:03|-0.06|0.21|0.5223|
+|=|          1|         60|        258|     8509.596280|        284|00:21:48|-0.01|0.19|0.5992|
+|=|          8|         60|        261|     11512.83023|        340|00:06:19|-0.04|0.14|0.6748|
+|=|          6|         60|        261|     13749.99734|        396|00:19:44|-0.01|0.13|0.7181|
+|=|          2|         60|        261|     12195.19364|        452|00:10:54|-0.00|0.12|0.7364|
+|=|          7|         60|        261|     11523.01484|        508|00:25:04|-0.00|0.11|0.6547|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+Best-so-far configuration:         261    mean value:      11523.01484
+Description of the best-so-far configuration:
+    .ID. pmin prange failfactor  alpha .PARENT.
+261  261    4     10    22.9328 0.1197       64
+
+# 2026-11-22 02:55:15 UTC: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+    pmin prange failfactor  alpha
+261    4     10    22.9328 0.1197
+192    4      9    45.6575 0.2309
+262    4      5    14.7232 0.0527
+61     4      6    13.6253 0.0534
+# 2026-11-22 02:55:15 UTC: Stopped because budget is exhausted
+# Iteration: 5
+# nbIterations: 4
+# experimentsUsed: 2000
+# timeUsed: 0
+# remainingBudget: 0
+# currentBudget: 508
+# number of elites: 4
+# nbConfigurations: 60
+# Total CPU user time: 50825.08, CPU sys time: 81.106, Wall-clock time: 13089.27
+final elite configurations written to /home/runner/work/VRP-Learn-core/VRP-Learn-core/results/irace/ils-f/final_elites.tsv 
