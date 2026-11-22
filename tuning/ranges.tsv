@@ -3,6 +3,7 @@
 # range of the C++ table; the defaults (<method>_default.txt) are not changed and must lie inside the new range.
 # Why: elites of the first pass (tuning/results/<method>-narrow/) sat at or near a range edge (irace-range-request.md, 2026-11-21).
 # columns (tab separated): method  parameter  type(i|r|i,log|r,log)  lower  upper
+ils-f	pmin	i	1	10
 ils-f	prange	i	1	12
 ils-f	failfactor	r,log	1	60
 ils-f	alpha	r	0.01	0.6
