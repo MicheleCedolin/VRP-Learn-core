@@ -1,7 +1,7 @@
-irace 4.5.1 | R version 4.6.2 (2026-10-29) 
-# 2026-11-22 01:48:11 UTC: Reading parameter file '/home/runner/work/VRP-Learn-core/VRP-Learn-core/results/irace/ig-f/params/ig-f.txt'.
-# 2026-11-22 01:48:11 UTC: Read 1 configuration(s) from file '/home/runner/work/VRP-Learn-core/VRP-Learn-core/results/irace/ig-f/params/ig-f_default.txt'
-# 2026-11-22 01:48:11 UTC: Initialization
+irace 4.5.1 | R version 4.5.3 (2026-03-11) 
+# 2026-11-22 21:17:12 EST: Reading parameter file '~/vrp-irace-cluster/results/irace/ig-f/params/ig-f.txt'.
+# 2026-11-22 21:18:08 EST: Read 1 configuration(s) from file '~/vrp-irace-cluster/results/irace/ig-f/params/ig-f_default.txt'
+# 2026-11-22 21:18:25 EST: Initialization
 # Elitist race
 # Elitist new instances: 1
 # Elitist limit: 2
@@ -14,7 +14,7 @@ irace 4.5.1 | R version 4.6.2 (2026-10-29)
 # mu: 5
 # deterministic: FALSE
 
-# 2026-11-22 01:48:11 UTC: Iteration 1 of 3
+# 2026-11-22 21:18:27 EST: Iteration 1 of 3
 # experimentsUsed: 0
 # remainingBudget: 2000
 # currentBudget: 666
@@ -31,24 +31,24 @@ irace 4.5.1 | R version 4.6.2 (2026-10-29)
 +-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
 | |   Instance|      Alive|       Best|       Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
 +-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
-|x|          1|        111|         31|     25944.00000|        111|00:29:01|   NA|  NA|    NA|
-|x|          2|        111|         29|     13687.84281|        222|00:23:30|-0.10|0.45|1.1511|
-|x|          3|        111|         37|     9333.450658|        333|00:09:13|-0.08|0.28|1.0788|
-|x|          4|        111|         81|     7202.088678|        444|00:06:39|-0.07|0.20|1.0332|
-|=|          5|        111|         81|     5934.943984|        555|00:12:09|-0.05|0.16|0.8181|
-|=|          6|        111|         38|     9349.882741|        666|00:28:09|-0.04|0.13|0.8392|
+|x|          1|        111|         31|     26074.00000|        111|00:08:50|   NA|  NA|    NA|
+|x|          2|        111|         31|     13686.52313|        222|00:08:04|-0.07|0.47|1.1169|
+|x|          3|        111|         31|     9338.077402|        333|00:05:06|-0.10|0.26|1.1106|
+|x|          4|        111|         81|     7217.408354|        444|00:04:37|-0.06|0.21|1.0397|
+|=|          5|        111|         81|     5947.199725|        555|00:05:28|-0.04|0.17|0.8220|
+|=|          6|        111|         81|     9439.666437|        666|00:08:38|-0.04|0.13|0.8604|
 +-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
-Best-so-far configuration:          38    mean value:      9349.882741
+Best-so-far configuration:          81    mean value:      9439.666437
 Description of the best-so-far configuration:
-   .ID.   frac   temp .PARENT.
-38   38 0.1141 0.2544       NA
+   .ID.  frac   temp .PARENT.
+81   81 0.125 0.1643       NA
 
-# 2026-11-22 03:36:55 UTC: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+# 2026-11-22 21:59:13 EST: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
      frac   temp
-38 0.1141 0.2544
-31 0.0922 0.1901
 81 0.1250 0.1643
-# 2026-11-22 03:36:55 UTC: Iteration 2 of 3
+31 0.0922 0.1901
+38 0.1141 0.2544
+# 2026-11-22 21:59:13 EST: Iteration 2 of 3
 # experimentsUsed: 666
 # remainingBudget: 1334
 # currentBudget: 667
@@ -65,46 +65,19 @@ Description of the best-so-far configuration:
 +-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
 | |   Instance|      Alive|       Best|       Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
 +-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
-|x|          7|         97|        179|     6123.481226|         97|00:36:54|   NA|  NA|    NA|
-|x|          6|         97|        162|     16406.97878|        191|00:23:47|-0.09|0.46|0.9782|
-|x|          5|         97|        162|     11226.77425|        285|00:10:24|-0.04|0.30|0.6560|
-|x|          4|         97|        141|     8572.094964|        379|00:05:35|-0.16|0.13|0.8150|
-|=|          2|         97|        112|     7124.975055|        473|00:19:25|-0.07|0.14|0.8361|
-|=|          1|         97|        112|     10292.64588|        567|00:29:54|-0.04|0.14|0.8607|
-|=|          3|         97|        112|     8913.865890|        661|00:08:03|-0.02|0.12|0.8613|
-+-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
-Best-so-far configuration:         112    mean value:      8913.865890
-Description of the best-so-far configuration:
-    .ID.   frac   temp .PARENT.
-112  112 0.0965 0.1683       38
-
-# 2026-11-22 05:51:01 UTC: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
-      frac   temp
-112 0.0965 0.1683
-204 0.1111 0.3879
-173 0.0914 0.1699
-# 2026-11-22 05:51:01 UTC: Iteration 3 of 3
-# experimentsUsed: 1327
-# remainingBudget: 673
-# currentBudget: 673
-# nbConfigurations: 86
-# Markers:
-     x No test is performed.
-     c Configurations are discarded only due to capping.
-     - The test is performed and some configurations are discarded.
-     = The test is performed but no configuration is discarded.
-     ! The test is performed and configurations could be discarded but elite configurations are preserved.
-     . Alive configurations were already evaluated on this instance and nothing is discarded.
-     : All alive configurations are elite, but some need to be evaluated on this instance.
-
-+-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
-| |   Instance|      Alive|       Best|       Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
-+-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
-irace 4.5.1 | R version 4.6.2 (2026-10-29) 
-# 2026-11-22 05:53:14 UTC: Reading parameter file '/home/runner/work/VRP-Learn-core/VRP-Learn-core/results/irace/ig-f/params/ig-f.txt'.
-# 2026-11-22 05:53:14 UTC: Recovering from file: '/home/runner/work/VRP-Learn-core/VRP-Learn-core/results/irace/ig-f/irace_resume.Rdata'
-# 2026-11-22 05:53:14 UTC: Read 1 configuration(s) from file '/home/runner/work/VRP-Learn-core/VRP-Learn-core/results/irace/ig-f/params/ig-f_default.txt'
-# 2026-11-22 05:53:14 UTC: Initialization
+|x|          7|         97|         81|     6145.584412|         97|00:15:34|   NA|  NA|    NA|
+|x|          1|         97|        131|     16086.79221|        191|00:10:01|-0.06|0.47|1.1690|
+|x|          2|         97|        144|     11181.08835|        285|00:07:54|+0.06|0.37|1.0280|
+Error in mcfork(detached) : 
+  unable to fork, possible reason: Cannot allocate memory
+Calls: irace ... execute_experiments -> <Anonymous> -> mcparallel -> mcfork
+Execution halted
+Error while shutting down parallel: unable to terminate some child processes
+irace 4.5.1 | R version 4.5.3 (2026-03-11) 
+# 2026-11-23 04:22:46 EST: Reading parameter file '~/vrp-irace-cluster/results/irace/ig-f/params/ig-f.txt'.
+# 2026-11-23 04:22:53 EST: Recovering from file: '~/vrp-irace-cluster/results/irace/ig-f/irace_resume.Rdata'
+# 2026-11-23 04:23:48 EST: Read 1 configuration(s) from file '~/vrp-irace-cluster/results/irace/ig-f/params/ig-f_default.txt'
+# 2026-11-23 04:24:07 EST: Initialization
 # Elitist race
 # Elitist new instances: 1
 # Elitist limit: 2
@@ -117,7 +90,7 @@ irace 4.5.1 | R version 4.6.2 (2026-10-29)
 # mu: 5
 # deterministic: FALSE
 
-# 2026-11-22 05:53:14 UTC: Iteration 1 of 3
+# 2026-11-23 04:24:08 EST: Iteration 1 of 3
 # experimentsUsed: 0
 # remainingBudget: 2000
 # currentBudget: 666
@@ -134,24 +107,24 @@ irace 4.5.1 | R version 4.6.2 (2026-10-29)
 +-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
 | |   Instance|      Alive|       Best|       Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
 +-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
-|x|          1|        111|         31|     25944.00000|        111|00:00:00|   NA|  NA|    NA|
-|x|          2|        111|         29|     13687.84281|        222|00:00:00|-0.10|0.45|1.1511|
-|x|          3|        111|         37|     9333.450658|        333|00:00:00|-0.08|0.28|1.0788|
-|x|          4|        111|         81|     7202.088678|        444|00:00:00|-0.07|0.20|1.0332|
-|=|          5|        111|         81|     5934.943984|        555|00:00:00|-0.05|0.16|0.8181|
-|=|          6|        111|         38|     9349.882741|        666|00:00:00|-0.04|0.13|0.8392|
+|x|          1|        111|         31|     26074.00000|        111|00:00:00|   NA|  NA|    NA|
+|x|          2|        111|         31|     13686.52313|        222|00:00:00|-0.07|0.47|1.1169|
+|x|          3|        111|         31|     9338.077402|        333|00:00:00|-0.10|0.26|1.1106|
+|x|          4|        111|         81|     7217.408354|        444|00:00:00|-0.06|0.21|1.0397|
+|=|          5|        111|         81|     5947.199725|        555|00:00:00|-0.04|0.17|0.8220|
+|=|          6|        111|         81|     9439.666437|        666|00:00:00|-0.04|0.13|0.8604|
 +-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
-Best-so-far configuration:          38    mean value:      9349.882741
+Best-so-far configuration:          81    mean value:      9439.666437
 Description of the best-so-far configuration:
-   .ID.   frac   temp .PARENT.
-38   38 0.1141 0.2544       NA
+   .ID.  frac   temp .PARENT.
+81   81 0.125 0.1643       NA
 
-# 2026-11-22 05:53:14 UTC: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+# 2026-11-23 04:24:10 EST: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
      frac   temp
-38 0.1141 0.2544
-31 0.0922 0.1901
 81 0.1250 0.1643
-# 2026-11-22 05:53:14 UTC: Iteration 2 of 3
+31 0.0922 0.1901
+38 0.1141 0.2544
+# 2026-11-23 04:24:10 EST: Iteration 2 of 3
 # experimentsUsed: 666
 # remainingBudget: 1334
 # currentBudget: 667
@@ -168,30 +141,31 @@ Description of the best-so-far configuration:
 +-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
 | |   Instance|      Alive|       Best|       Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
 +-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
-|x|          7|         97|        179|     6123.481226|         97|00:00:00|   NA|  NA|    NA|
-|x|          6|         97|        162|     16406.97878|        191|00:00:00|-0.09|0.46|0.9782|
-|x|          5|         97|        162|     11226.77425|        285|00:00:00|-0.04|0.30|0.6560|
-|x|          4|         97|        141|     8572.094964|        379|00:00:00|-0.16|0.13|0.8150|
-|=|          2|         97|        112|     7124.975055|        473|00:00:00|-0.07|0.14|0.8361|
-|=|          1|         97|        112|     10292.64588|        567|00:00:00|-0.04|0.14|0.8607|
-# 2026-11-22 05:53:14 UTC: Recovery completed.
-|=|          3|         97|        112|     8913.865890|        661|00:00:00|-0.02|0.12|0.8613|
+|x|          7|         97|         81|     6145.584412|         97|00:00:00|   NA|  NA|    NA|
+|x|          1|         97|        131|     16086.79221|        191|00:00:00|-0.06|0.47|1.1690|
+# 2026-11-23 04:24:10 EST: Recovery completed.
+|x|          2|         97|        144|     11181.08835|        285|00:00:00|+0.06|0.37|1.0280|
+|x|          6|         97|        197|     15068.32235|        379|00:08:45|+0.12|0.34|0.9840|
+|-|          5|         46|        197|     12227.93092|        473|00:05:33|-0.01|0.19|0.8571|
+|=|          4|         46|        197|     10282.72229|        516|00:02:01|-0.02|0.15|0.8581|
+|=|          3|         46|        197|     8905.359957|        559|00:02:19|-0.00|0.14|0.8563|
+|=|          8|         46|        144|     11108.31192|        605|00:02:56|-0.01|0.12|0.8791|
 +-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
-Best-so-far configuration:         112    mean value:      8913.865890
+Best-so-far configuration:         144    mean value:      11108.31192
 Description of the best-so-far configuration:
     .ID.   frac   temp .PARENT.
-112  112 0.0965 0.1683       38
+144  144 0.1263 0.2118       38
 
-# 2026-11-22 05:53:14 UTC: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+# 2026-11-23 04:45:46 EST: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
       frac   temp
-112 0.0965 0.1683
-204 0.1111 0.3879
-173 0.0914 0.1699
-# 2026-11-22 05:53:14 UTC: Iteration 3 of 3
-# experimentsUsed: 1327
-# remainingBudget: 673
-# currentBudget: 673
-# nbConfigurations: 86
+144 0.1263 0.2118
+197 0.1119 0.2129
+81  0.1250 0.1643
+# 2026-11-23 04:45:46 EST: Iteration 3 of 3
+# experimentsUsed: 1271
+# remainingBudget: 729
+# currentBudget: 729
+# nbConfigurations: 83
 # Markers:
      x No test is performed.
      c Configurations are discarded only due to capping.
@@ -204,42 +178,83 @@ Description of the best-so-far configuration:
 +-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
 | |   Instance|      Alive|       Best|       Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
 +-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
-|x|          8|         86|        288|     26383.00000|         86|00:09:42|   NA|  NA|    NA|
-|x|          5|         86|        288|     13624.68260|        169|00:09:07|+0.00|0.50|0.4942|
-|x|          7|         86|        288|     11131.64987|        252|00:30:57|+0.00|0.33|0.3295|
-|x|          1|         86|        288|     14837.98741|        335|00:25:37|-0.07|0.20|0.5083|
-|=|          2|         86|        245|     12139.48901|        418|00:16:56|-0.03|0.18|0.5879|
-|=|          6|         86|        245|     14584.24084|        501|00:20:21|+0.00|0.17|0.6375|
-|=|          4|         86|        245|     12580.12504|        584|00:04:56|+0.00|0.14|0.6858|
-|=|          3|         86|        245|     11087.75765|        667|00:07:01|+0.00|0.13|0.7106|
+|x|          9|         83|        262|     14156.00000|         83|00:06:40|   NA|  NA|    NA|
+|x|          8|         83|        207|     20293.00000|        163|00:04:25|+0.06|0.53|0.8441|
+|x|          3|         83|        207|     13742.39532|        243|00:03:31|+0.17|0.44|0.7772|
+|x|          1|         83|        266|     16832.04649|        323|00:08:51|+0.16|0.37|0.7869|
+|-|          4|         62|        207|     13628.32324|        403|00:03:06|-0.13|0.10|1.0787|
+|=|          7|         62|        207|     12381.20010|        462|00:07:11|-0.10|0.08|0.8831|
+|=|          5|         62|        207|     10736.22369|        521|00:03:10|-0.09|0.07|0.7479|
+|=|          2|         62|        144|     9525.436921|        580|00:04:50|-0.05|0.08|0.7701|
+|=|          6|         62|        144|     11449.05504|        639|00:05:11|-0.02|0.09|0.7834|
+|=|         10|         62|        273|     15191.40110|        701|00:04:51|-0.02|0.08|0.8052|
 +-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
-Best-so-far configuration:         245    mean value:      11087.75765
+Best-so-far configuration:         273    mean value:      15191.40110
 Description of the best-so-far configuration:
-    .ID. frac   temp .PARENT.
-245  245 0.09 0.1805      173
+    .ID.   frac  temp .PARENT.
+273  273 0.1258 0.178       81
 
-# 2026-11-22 07:57:56 UTC: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+# 2026-11-23 05:37:37 EST: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
       frac   temp
-245 0.0900 0.1805
-284 0.0972 0.1688
-173 0.0914 0.1699
-# 2026-11-22 07:57:56 UTC: Stopped because there is not enough budget left to race more than the minimum (3).
+273 0.1258 0.1780
+144 0.1263 0.2118
+282 0.1107 0.2143
+# 2026-11-23 05:37:37 EST: Iteration 4 of 4
+# experimentsUsed: 1972
+# remainingBudget: 28
+# currentBudget: 28
+# nbConfigurations: 5
+# Markers:
+     x No test is performed.
+     c Configurations are discarded only due to capping.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+     . Alive configurations were already evaluated on this instance and nothing is discarded.
+     : All alive configurations are elite, but some need to be evaluated on this instance.
+
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|       Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+|x|         11|          5|        144|     24520.00000|          5|00:02:30|   NA|  NA|    NA|
+|x|         10|          5|        273|     36728.50000|          7|00:01:03|-0.36|0.32|1.2299|
+|x|          5|          5|        273|     24774.45507|          9|00:00:48|-0.18|0.21|0.6766|
+|x|          3|          5|        273|     18741.13779|         11|00:00:36|-0.03|0.23|0.6242|
+|=|          8|          5|        144|     20262.51023|         13|00:00:51|+0.14|0.31|0.5743|
+|=|          4|          5|        273|     16992.66357|         15|00:00:33|+0.11|0.26|0.5861|
+|=|          6|          5|        273|     18400.42591|         17|00:01:20|+0.19|0.30|0.5653|
+|=|          7|          5|        273|     16868.57073|         19|00:01:48|+0.16|0.27|0.5097|
+|=|          9|          5|        273|     16569.17398|         21|00:01:01|+0.16|0.25|0.5423|
+|-|          1|          3|        282|     17508.08147|         23|00:02:05|-0.06|0.05|0.4941|
+|.|          2|          3|        282|     16034.63954|         23|00:00:00|-0.09|0.01|0.5293|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+Best-so-far configuration:         282    mean value:      16034.63954
+Description of the best-so-far configuration:
+    .ID.   frac   temp .PARENT.
+282  282 0.1107 0.2143      197
+
+# 2026-11-23 05:50:16 EST: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+      frac   temp
+282 0.1107 0.2143
+273 0.1258 0.1780
+144 0.1263 0.2118
+# 2026-11-23 05:50:16 EST: Stopped because there is not enough budget left to race more than the minimum (3).
 # You may either increase the budget or set 'minNbSurvival' to a lower value.
-# Iteration: 4
-# nbIterations: 4
-# experimentsUsed: 1994
+# Iteration: 5
+# nbIterations: 5
+# experimentsUsed: 1995
 # timeUsed: 0
-# remainingBudget: 6
-# currentBudget: 6
+# remainingBudget: 5
+# currentBudget: 5
 # number of elites: 3
 # nbConfigurations: 3
-# Total CPU user time: 29366.62, CPU sys time: 28.459, Wall-clock time: 7481.802
-# 2026-11-22 07:57:56 UTC: Starting post-selection:
-# Configurations selected: 245, 284, 173, 112, 204, 206.
-# Pending instances: 0, 0, 0, 0, 0, 0.
-# 2026-11-22 07:57:56 UTC: seed: 1
-# Configurations: 6
-# Available experiments: 6
+# Total CPU user time: 41786.9, CPU sys time: 104.638, Wall-clock time: 5238.29
+# 2026-11-23 05:50:17 EST: Starting post-selection:
+# Configurations selected: 282, 273, 144, 197.
+# Pending instances: 1, 1, 1, 2.
+# 2026-11-23 05:51:02 EST: seed: 1
+# Configurations: 4
+# Available experiments: 5
 # minSurvival: 1
 # Markers:
      x No test is performed.
@@ -253,25 +268,28 @@ Description of the best-so-far configuration:
 +-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
 | |   Instance|      Alive|       Best|       Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
 +-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
-|.|          8|          6|        284|     26392.00000|          0|00:00:00|   NA|  NA|    NA|
-|.|          1|          6|        284|     26261.50000|          0|00:00:00|+0.09|0.54|0.8584|
-|.|          6|          6|        284|     26429.33333|          0|00:00:00|+0.00|0.33|0.8271|
-|.|          4|          6|        284|     19960.85756|          0|00:00:00|+0.00|0.25|0.6219|
-|.|          3|          6|        284|     16096.92324|          0|00:00:00|+0.00|0.20|0.4981|
-|.|          7|          6|        284|     14438.36677|          0|00:00:00|+0.00|0.17|0.4154|
-|.|          5|          6|        284|     12499.50940|          0|00:00:00|+0.00|0.14|0.3563|
-|.|          2|          6|        284|     11098.67206|          0|00:00:00|+0.05|0.17|0.3773|
-|=|          9|          6|        284|     11437.70850|          6|00:01:23|+0.09|0.19|0.4057|
+|.|          9|          4|        273|     14174.00000|          0|00:00:00|   NA|  NA|    NA|
+|.|          7|          4|        273|     10159.79221|          0|00:00:00|+0.00|0.50|0.3750|
+|.|          4|          4|        273|     6958.338216|          0|00:00:00|+0.27|0.51|0.3985|
+|.|         10|          4|        273|     17415.75366|          0|00:00:00|+0.45|0.59|0.3356|
+|.|          5|          4|        273|     14105.87597|          0|00:00:00|+0.34|0.47|0.3139|
+|.|          8|          4|        273|     16160.89664|          0|00:00:00|+0.01|0.18|0.4803|
+|x|         11|          4|        273|     17376.33998|          1|00:02:17|-0.13|0.03|0.5951|
+|.|          2|          4|        273|     15365.72814|          1|00:00:00|-0.09|0.05|0.5899|
+|.|          1|          4|        273|     16566.09168|          1|00:00:00|-0.12|0.01|0.6428|
+|.|          6|          4|        273|     17594.18251|          1|00:00:00|-0.10|0.01|0.6656|
+|.|          3|          4|        273|     16053.00100|          1|00:00:00|-0.09|0.01|0.5992|
+|=|         12|          4|        282|     15021.28299|          5|00:01:29|-0.07|0.02|0.6048|
 +-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
-Best-so-far configuration:         284    mean value:      11437.70850
+Best-so-far configuration:         282    mean value:      15021.28299
 Description of the best-so-far configuration:
     .ID.   frac   temp .PARENT.
-284  284 0.0972 0.1688      112
+282  282 0.1107 0.2143      197
 
-# 2026-11-22 07:59:19 UTC: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+# 2026-11-23 05:54:49 EST: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
       frac   temp
-284 0.0972 0.1688
-112 0.0965 0.1683
-245 0.0900 0.1805
-# Total CPU user time: 29602.44, CPU sys time: 28.714, Wall-clock time: 7564.975
-final elite configurations written to /home/runner/work/VRP-Learn-core/VRP-Learn-core/results/irace/ig-f/final_elites.tsv 
+282 0.1107 0.2143
+197 0.1119 0.2129
+144 0.1263 0.2118
+# Total CPU user time: 42180.62, CPU sys time: 105.328, Wall-clock time: 5509.794
+final elite configurations written to ~/vrp-irace-cluster/results/irace/ig-f/final_elites.tsv 

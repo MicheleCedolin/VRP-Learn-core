@@ -1,0 +1,2 @@
+pmin prange failfactor alpha
+2 3 5 0.3

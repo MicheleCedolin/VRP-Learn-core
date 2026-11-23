@@ -1,0 +1,5 @@
+brkga-f: 4 parameter(s)
+  pop          i  default 30       range [15, 80]  population size
+  pe           r  default 0.2      range [0.1, 0.4]  elite fraction
+  pm           r  default 0.15     range [0.05, 0.3]  mutant fraction
+  restart      i  default 30       range [10, 100]  restart after this many generations without improvement

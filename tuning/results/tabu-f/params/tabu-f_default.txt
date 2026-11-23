@@ -1,0 +1,2 @@
+beta0 betadiv tmin tspan h kmax divfactor
+1.5 3 5 5 10 40 2

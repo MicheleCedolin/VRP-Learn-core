@@ -1,0 +1,1 @@
+--param pmin=7 --param prange=27 --param failfactor=27.7519 --param alpha=0.2298
