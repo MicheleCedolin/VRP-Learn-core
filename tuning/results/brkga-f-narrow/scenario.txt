@@ -1,0 +1,11 @@
+targetRunner = "~/vrp-irace-cluster/tuning/target-runner"
+parameterFile = "~/vrp-irace-cluster/results/irace/brkga-f/params/brkga-f.txt"
+configurationsFile = "~/vrp-irace-cluster/results/irace/brkga-f/params/brkga-f_default.txt"
+trainInstancesDir = ""
+trainInstancesFile = "~/vrp-irace-cluster/tuning/split/train.txt"
+execDir = "~/vrp-irace-cluster"
+logFile = "~/vrp-irace-cluster/results/irace/brkga-f/irace.Rdata"
+maxExperiments = 2000
+parallel = 16
+seed = 1
+deterministic = FALSE

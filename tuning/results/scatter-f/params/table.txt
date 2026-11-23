@@ -1,0 +1,3 @@
+scatter-f: 2 parameter(s)
+  b            i  default 10       range [6, 20]  reference set size
+  bdiv         i  default 4        range [2, 8]  members replaced at regeneration

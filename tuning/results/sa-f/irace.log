@@ -1,0 +1,176 @@
+irace 4.5.1 | R version 4.5.3 (2026-03-11) 
+# 2026-11-22 19:22:49 EST: Reading parameter file '~/vrp-irace-cluster/results/irace/sa-f/params/sa-f.txt'.
+# 2026-11-22 19:22:49 EST: Read 1 configuration(s) from file '~/vrp-irace-cluster/results/irace/sa-f/params/sa-f_default.txt'
+# 2026-11-22 19:22:49 EST: Initialization
+# Elitist race
+# Elitist new instances: 1
+# Elitist limit: 2
+# nbIterations: 3
+# minNbSurvival: 3
+# nbParameters: 2
+# seed: 1
+# confidence level: 0.95
+# budget: 2000
+# mu: 5
+# deterministic: FALSE
+
+# 2026-11-22 19:22:49 EST: Iteration 1 of 3
+# experimentsUsed: 0
+# remainingBudget: 2000
+# currentBudget: 666
+# nbConfigurations: 111
+# Markers:
+     x No test is performed.
+     c Configurations are discarded only due to capping.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+     . Alive configurations were already evaluated on this instance and nothing is discarded.
+     : All alive configurations are elite, but some need to be evaluated on this instance.
+
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|       Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+|x|          1|        111|         76|     25990.00000|        111|00:09:28|   NA|  NA|    NA|
+|x|          2|        111|         85|     13655.30579|        222|00:05:34|+0.01|0.50|0.6654|
+|x|          3|        111|        103|     9335.119628|        333|00:02:20|-0.00|0.33|0.8304|
+|x|          4|        111|        103|     7140.197280|        444|00:01:49|+0.04|0.28|0.7317|
+|-|          5|         63|        103|     5885.430866|        555|00:02:57|-0.07|0.14|1.0375|
+|=|          6|         63|         63|     9382.884785|        618|00:04:35|-0.04|0.13|0.9973|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+Best-so-far configuration:          63    mean value:      9382.884785
+Description of the best-so-far configuration:
+   .ID. resetfactor tfloor .PARENT.
+63   63     75.9765 0.0321       NA
+
+# 2026-11-22 19:49:37 EST: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+    resetfactor tfloor
+63      75.9765 0.0321
+108      8.1608 0.0420
+103     10.4213 0.0115
+# 2026-11-22 19:49:37 EST: Iteration 2 of 3
+# experimentsUsed: 618
+# remainingBudget: 1382
+# currentBudget: 691
+# nbConfigurations: 101
+# Markers:
+     x No test is performed.
+     c Configurations are discarded only due to capping.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+     . Alive configurations were already evaluated on this instance and nothing is discarded.
+     : All alive configurations are elite, but some need to be evaluated on this instance.
+
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|       Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+|x|          7|        101|         63|     6339.019320|        101|00:10:00|   NA|  NA|    NA|
+|x|          2|        101|        146|     3816.789698|        199|00:05:00|+0.00|0.50|0.4950|
+|x|          5|        101|        146|     2833.314868|        297|00:02:41|+0.06|0.37|0.6107|
+|x|          6|        101|        120|     8814.714810|        395|00:07:03|+0.04|0.28|0.7022|
+|-|          3|         64|        199|     7200.529496|        493|00:02:06|-0.07|0.14|0.8308|
+|=|          1|         64|        131|     10365.83834|        554|00:05:53|-0.05|0.12|0.8373|
+|=|          4|         64|        131|     8964.351465|        615|00:01:03|-0.04|0.11|0.8503|
+|=|          8|         64|        167|     11150.25842|        679|00:01:55|-0.04|0.09|0.8732|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+Best-so-far configuration:         167    mean value:      11150.25842
+Description of the best-so-far configuration:
+    .ID. resetfactor tfloor .PARENT.
+167  167      7.3374 0.0315      108
+
+# 2026-11-22 20:25:22 EST: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+    resetfactor tfloor
+167      7.3374 0.0315
+139     92.3567 0.0328
+147      8.0446 0.0315
+# 2026-11-22 20:25:22 EST: Iteration 3 of 3
+# experimentsUsed: 1297
+# remainingBudget: 703
+# currentBudget: 703
+# nbConfigurations: 80
+# Markers:
+     x No test is performed.
+     c Configurations are discarded only due to capping.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+     . Alive configurations were already evaluated on this instance and nothing is discarded.
+     : All alive configurations are elite, but some need to be evaluated on this instance.
+
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|       Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+|x|          9|         80|        238|     14138.00000|         80|00:03:31|   NA|  NA|    NA|
+|x|          4|         80|        238|     7346.715118|        157|00:01:14|+0.04|0.52|0.9410|
+|x|          6|         80|        238|     13852.47675|        234|00:05:40|-0.04|0.30|1.0082|
+|x|          3|         80|        238|     10549.65405|        311|00:01:33|+0.00|0.25|0.9594|
+|=|          8|         80|        238|     13731.92324|        388|00:02:13|-0.03|0.18|0.9943|
+|=|          2|         80|        167|     11665.78047|        465|00:04:09|-0.01|0.16|0.9945|
+|=|          1|         80|        238|     13709.75760|        542|00:06:55|+0.01|0.15|0.9800|
+|=|          7|         80|        238|     12788.41532|        619|00:07:51|+0.01|0.13|0.8584|
+|=|          5|         80|        238|     11463.74308|        696|00:02:07|+0.00|0.12|0.8750|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+Best-so-far configuration:         238    mean value:      11463.74308
+Description of the best-so-far configuration:
+    .ID. resetfactor tfloor .PARENT.
+238  238      7.3221 0.0307      167
+
+# 2026-11-22 21:00:40 EST: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+    resetfactor tfloor
+238      7.3221 0.0307
+167      7.3374 0.0315
+237      7.4217 0.0317
+# 2026-11-22 21:00:40 EST: Stopped because there is not enough budget left to race more than the minimum (3).
+# You may either increase the budget or set 'minNbSurvival' to a lower value.
+# Iteration: 4
+# nbIterations: 4
+# experimentsUsed: 1993
+# timeUsed: 0
+# remainingBudget: 7
+# currentBudget: 7
+# number of elites: 3
+# nbConfigurations: 3
+# Total CPU user time: 85684.15, CPU sys time: 105.886, Wall-clock time: 5871.014
+# 2026-11-22 21:00:40 EST: Starting post-selection:
+# Configurations selected: 238, 167, 237, 139, 147, 210, 211.
+# Pending instances: 0, 0, 0, 0, 0, 0, 0.
+# 2026-11-22 21:00:40 EST: seed: 1
+# Configurations: 7
+# Available experiments: 7
+# minSurvival: 1
+# Markers:
+     x No test is performed.
+     c Configurations are discarded only due to capping.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+     . Alive configurations were already evaluated on this instance and nothing is discarded.
+     : All alive configurations are elite, but some need to be evaluated on this instance.
+
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|       Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+|.|          9|          7|        238|     14138.00000|          0|00:00:00|   NA|  NA|    NA|
+|.|          7|          7|        238|     10238.50966|          0|00:00:00|+0.00|0.50|0.4286|
+|.|          6|          7|        238|     15780.33977|          0|00:00:00|+0.14|0.42|0.5223|
+|.|          4|          7|        238|     11974.11239|          0|00:00:00|+0.09|0.32|0.4040|
+|.|          5|          7|        238|     9752.562953|          0|00:00:00|+0.07|0.25|0.3281|
+|.|          1|          7|        238|     12461.46913|          0|00:00:00|+0.06|0.22|0.4045|
+|.|          2|          7|        238|     10867.35740|          0|00:00:00|+0.05|0.18|0.4751|
+|.|          8|          7|        238|     12816.56272|          0|00:00:00|-0.06|0.07|0.5759|
+|.|          3|          7|        238|     11463.74308|          0|00:00:00|-0.03|0.09|0.5960|
+|=|         10|          7|        238|     15199.06877|          7|00:00:45|-0.04|0.06|0.6405|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+Best-so-far configuration:         238    mean value:      15199.06877
+Description of the best-so-far configuration:
+    .ID. resetfactor tfloor .PARENT.
+238  238      7.3221 0.0307      167
+
+# 2026-11-22 21:01:26 EST: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+    resetfactor tfloor
+238      7.3221 0.0307
+147      8.0446 0.0315
+167      7.3374 0.0315
+# Total CPU user time: 85994.38, CPU sys time: 106.194, Wall-clock time: 5916.838
+final elite configurations written to ~/vrp-irace-cluster/results/irace/sa-f/final_elites.tsv 

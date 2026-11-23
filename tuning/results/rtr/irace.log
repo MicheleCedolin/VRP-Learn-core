@@ -1,0 +1,136 @@
+irace 4.5.1 | R version 4.5.3 (2026-03-11) 
+# 2026-11-22 20:16:40 EST: Reading parameter file '~/vrp-irace-cluster/results/irace/rtr/params/rtr.txt'.
+# 2026-11-22 20:17:04 EST: Read 1 configuration(s) from file '~/vrp-irace-cluster/results/irace/rtr/params/rtr_default.txt'
+# 2026-11-22 20:17:12 EST: Initialization
+# Elitist race
+# Elitist new instances: 1
+# Elitist limit: 2
+# nbIterations: 2
+# minNbSurvival: 2
+# nbParameters: 1
+# seed: 1
+# confidence level: 0.95
+# budget: 2000
+# mu: 5
+# deterministic: FALSE
+
+# 2026-11-22 20:17:13 EST: Iteration 1 of 2
+# experimentsUsed: 0
+# remainingBudget: 2000
+# currentBudget: 1000
+# nbConfigurations: 166
+# Markers:
+     x No test is performed.
+     c Configurations are discarded only due to capping.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+     . Alive configurations were already evaluated on this instance and nothing is discarded.
+     : All alive configurations are elite, but some need to be evaluated on this instance.
+
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|       Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+|x|          1|        166|        129|     26047.00000|        166|00:14:59|   NA|  NA|    NA|
+|x|          2|        166|        129|     13673.39603|        332|00:10:01|+0.26|0.63|0.6308|
+|x|          3|        166|         87|     9353.351967|        498|00:05:26|+0.36|0.57|0.5530|
+|x|          4|        166|         87|     7153.871534|        664|00:04:07|+0.45|0.58|0.4671|
+|-|          5|         75|         98|     5884.996492|        830|00:06:16|-0.10|0.12|1.0575|
+|=|          6|         75|         98|     9375.663744|        905|00:06:29|-0.06|0.12|1.0325|
+|=|          7|         75|          4|     8951.724626|        980|00:08:22|-0.06|0.09|1.0371|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+Best-so-far configuration:           4    mean value:      8951.724626
+Description of the best-so-far configuration:
+  .ID.   dev0 .PARENT.
+4    4 0.0106       NA
+
+# 2026-11-22 21:12:59 EST: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+     dev0
+4  0.0106
+98 0.0168
+# 2026-11-22 21:12:59 EST: Iteration 2 of 2
+# experimentsUsed: 980
+# remainingBudget: 1020
+# currentBudget: 1020
+# nbConfigurations: 129
+# Markers:
+     x No test is performed.
+     c Configurations are discarded only due to capping.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+     . Alive configurations were already evaluated on this instance and nothing is discarded.
+     : All alive configurations are elite, but some need to be evaluated on this instance.
+
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|       Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+|x|          8|        129|        234|     26383.00000|        129|00:04:39|   NA|  NA|    NA|
+|x|          7|        129|        234|     16280.94571|        256|00:13:46|+0.08|0.54|0.9064|
+|x|          3|        129|        244|     11079.02322|        383|00:03:34|-0.08|0.28|1.0721|
+|x|          1|        129|        272|     14833.56166|        510|00:11:42|-0.04|0.22|1.0367|
+|=|          2|        129|        272|     12127.42673|        637|00:07:36|+0.00|0.20|1.0025|
+|=|          6|        129|        244|     14599.33405|        764|00:09:43|-0.00|0.16|1.0026|
+|=|          5|        129|          4|     12649.09174|        891|00:04:47|+0.00|0.14|0.9938|
+|=|          4|        129|          4|     11137.38405|       1018|00:02:53|+0.00|0.13|0.9810|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+Best-so-far configuration:           4    mean value:      11137.38405
+Description of the best-so-far configuration:
+  .ID.   dev0 .PARENT.
+4    4 0.0106       NA
+
+# 2026-11-22 22:11:43 EST: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+      dev0
+4   0.0106
+244 0.0108
+# 2026-11-22 22:11:43 EST: Stopped because there is not enough budget left to race more than the minimum (2).
+# You may either increase the budget or set 'minNbSurvival' to a lower value.
+# Iteration: 3
+# nbIterations: 3
+# experimentsUsed: 1998
+# timeUsed: 0
+# remainingBudget: 2
+# currentBudget: 2
+# number of elites: 2
+# nbConfigurations: 2
+# Total CPU user time: 89790.67, CPU sys time: 127.625, Wall-clock time: 6899.812
+# 2026-11-22 22:11:43 EST: Starting post-selection:
+# Configurations selected: 4, 244.
+# Pending instances: 0, 0.
+# 2026-11-22 22:12:10 EST: seed: 1
+# Configurations: 2
+# Available experiments: 2
+# minSurvival: 1
+# Markers:
+     x No test is performed.
+     c Configurations are discarded only due to capping.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+     . Alive configurations were already evaluated on this instance and nothing is discarded.
+     : All alive configurations are elite, but some need to be evaluated on this instance.
+
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|       Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+|.|          8|          2|          4|     26437.00000|          0|00:00:00|   NA|  NA|    NA|
+|.|          1|          2|          4|     26351.50000|          0|00:00:00|-1.00|0.00|1.0000|
+|.|          6|          2|          4|     26521.33333|          0|00:00:00|-0.33|0.11|0.6667|
+|.|          4|          2|          4|     20029.85756|          0|00:00:00|-0.22|0.08|0.4583|
+|.|          3|          2|          4|     16152.12324|          0|00:00:00|-0.17|0.07|0.3500|
+|.|          7|          2|          4|     14488.16898|          0|00:00:00|+0.00|0.17|0.3333|
+|.|          5|          2|          4|     12542.19701|          0|00:00:00|-0.13|0.03|0.4048|
+|.|          2|          2|          4|     11137.38405|          0|00:00:00|-0.14|0.00|0.4286|
+|=|          9|          2|          4|     11472.78582|          2|00:00:47|-0.11|0.02|0.4306|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+Best-so-far configuration:           4    mean value:      11472.78582
+Description of the best-so-far configuration:
+  .ID.   dev0 .PARENT.
+4    4 0.0106       NA
+
+# 2026-11-22 22:12:58 EST: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+      dev0
+4   0.0106
+244 0.0108
+# Total CPU user time: 89873.5, CPU sys time: 127.781, Wall-clock time: 6974.366
+final elite configurations written to ~/vrp-irace-cluster/results/irace/rtr/final_elites.tsv 

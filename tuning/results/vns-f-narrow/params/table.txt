@@ -1,0 +1,3 @@
+vns-f: 2 parameter(s)
+  kmax         i  default 6        range [2, 10]  largest shaking neighbourhood
+  t0           r  default 0.5      range [0, 2]  start temperature / mean arc

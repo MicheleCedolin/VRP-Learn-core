@@ -1,0 +1,7 @@
+beta0        "--beta0 "  r  (0.5, 2.5)
+betadiv      "--betadiv "  r  (2, 5)
+tmin         "--tmin "  i  (2, 50)
+tspan        "--tspan "  i  (0, 50)
+h            "--h "  i  (1, 30)
+kmax         "--kmax "  i  (10, 60)
+divfactor    "--divfactor "  r,log  (0.5, 10)

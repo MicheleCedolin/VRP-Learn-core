@@ -1,0 +1,5 @@
+ils-f: 4 parameter(s)
+  pmin         i  default 2        range [1, 4]  minimum number of perturbation moves
+  prange       i  default 3        range [1, 6]  number of perturbation moves = pmin + U{0..prange-1}
+  failfactor   r  default 5        range [1, 20]  restart after n + failfactor x routes failures
+  alpha        r  default 0.3      range [0.05, 0.6]  restricted candidate list of the restart construction

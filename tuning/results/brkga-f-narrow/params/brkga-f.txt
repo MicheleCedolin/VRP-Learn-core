@@ -1,0 +1,4 @@
+pop          "--pop "  i  (15, 80)
+pe           "--pe "  r  (0.1, 0.4)
+pm           "--pm "  r  (0.05, 0.3)
+restart      "--restart "  i  (10, 100)

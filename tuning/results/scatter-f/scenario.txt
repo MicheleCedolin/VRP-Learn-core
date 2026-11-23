@@ -1,0 +1,11 @@
+targetRunner = "~/vrp-irace-cluster/tuning/target-runner"
+parameterFile = "~/vrp-irace-cluster/results/irace/scatter-f/params/scatter-f.txt"
+configurationsFile = "~/vrp-irace-cluster/results/irace/scatter-f/params/scatter-f_default.txt"
+trainInstancesDir = ""
+trainInstancesFile = "~/vrp-irace-cluster/tuning/split/train.txt"
+execDir = "~/vrp-irace-cluster"
+logFile = "~/vrp-irace-cluster/results/irace/scatter-f/irace.Rdata"
+maxExperiments = 2000
+parallel = 16
+seed = 1
+deterministic = FALSE

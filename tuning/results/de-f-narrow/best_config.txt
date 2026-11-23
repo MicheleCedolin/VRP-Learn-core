@@ -1,0 +1,1 @@
+--param np=47 --param cr=0.9342 --param fmin=0.1646 --param fspan=0.0974

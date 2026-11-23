@@ -1,0 +1,7 @@
+mu           "--mu "  i  (4, 60)
+lambda       "--lambda "  i  (1, 100)
+nelite       "--nelite "  i  (1, 10)
+nclose       "--nclose "  i  (2, 20)
+target       "--target "  r  (0.05, 0.5)
+repair       "--repair "  r  (0, 1)
+divafter     "--divafter "  i,log  (100, 20000)

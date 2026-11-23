@@ -1,0 +1,5 @@
+aco: 4 parameter(s)
+  alpha        r  default 1        range [0.5, 5]  pheromone exponent
+  beta         r  default 3        range [1, 8]  visibility exponent
+  rho          r  default 0.1      range [0.01, 0.5] log  evaporation rate
+  ants         i  default 10       range [5, 30]  ants per cycle

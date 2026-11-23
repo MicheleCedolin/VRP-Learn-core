@@ -1,0 +1,216 @@
+irace 4.5.1 | R version 4.5.3 (2026-03-11) 
+# 2026-11-22 12:39:34 EST: Reading parameter file '~/vrp-irace-cluster/results/irace/sisr/params/sisr.txt'.
+# 2026-11-22 12:39:34 EST: Read 1 configuration(s) from file '~/vrp-irace-cluster/results/irace/sisr/params/sisr_default.txt'
+# 2026-11-22 12:39:34 EST: Initialization
+# Elitist race
+# Elitist new instances: 1
+# Elitist limit: 2
+# nbIterations: 4
+# minNbSurvival: 4
+# nbParameters: 6
+# seed: 1
+# confidence level: 0.95
+# budget: 2000
+# mu: 5
+# deterministic: FALSE
+
+# 2026-11-22 12:39:34 EST: Iteration 1 of 4
+# experimentsUsed: 0
+# remainingBudget: 2000
+# currentBudget: 500
+# nbConfigurations: 83
+# Markers:
+     x No test is performed.
+     c Configurations are discarded only due to capping.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+     . Alive configurations were already evaluated on this instance and nothing is discarded.
+     : All alive configurations are elite, but some need to be evaluated on this instance.
+
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|       Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+|x|          1|         83|          2|     25967.00000|         83|00:06:41|   NA|  NA|    NA|
+|x|          2|         83|         52|     13648.14739|        166|00:04:15|+0.40|0.70|0.3808|
+|x|          3|         83|         52|     9312.493575|        249|00:01:56|+0.30|0.53|0.6625|
+|x|          4|         83|         52|     7123.227740|        332|00:01:19|+0.20|0.40|0.5783|
+|-|          5|         55|         52|     5871.855234|        415|00:02:30|-0.04|0.17|0.6095|
+|=|          6|         55|         52|     9335.379362|        470|00:03:49|+0.06|0.22|0.6190|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+Best-so-far configuration:          52    mean value:      9335.379362
+Description of the best-so-far configuration:
+   .ID.    cbar lmax  alpha  blink     t0     tf .PARENT.
+52   52 13.5345   14 0.3675 0.0511 0.6901 0.0236       NA
+
+# 2026-11-22 13:00:08 EST: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+      cbar lmax  alpha  blink     t0     tf
+52 13.5345   14 0.3675 0.0511 0.6901 0.0236
+37 12.1282   11 0.0042 0.0105 0.6150 0.0153
+55 19.1595   10 0.0076 0.0386 1.0944 0.0419
+42 14.9407   26 0.3026 0.0042 1.2281 0.0020
+# 2026-11-22 13:00:08 EST: Iteration 2 of 4
+# experimentsUsed: 470
+# remainingBudget: 1530
+# currentBudget: 510
+# nbConfigurations: 76
+# Markers:
+     x No test is performed.
+     c Configurations are discarded only due to capping.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+     . Alive configurations were already evaluated on this instance and nothing is discarded.
+     : All alive configurations are elite, but some need to be evaluated on this instance.
+
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|       Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+|x|          7|         76|         85|     6078.754876|         76|00:07:12|   NA|  NA|    NA|
+|x|          1|         76|         98|     16005.87744|        148|00:06:01|+0.15|0.58|0.7606|
+|x|          2|         76|         98|     11102.40258|        220|00:03:33|+0.13|0.42|0.7608|
+|x|          3|         76|         98|     8487.098425|        292|00:01:42|+0.06|0.29|0.8661|
+|=|          4|         76|         98|     6900.764787|        364|00:01:08|+0.04|0.24|0.7170|
+|=|          5|         76|         98|     5895.031524|        436|00:02:03|+0.04|0.20|0.6096|
+|-|          6|         39|         98|     8855.884164|        508|00:04:55|-0.06|0.09|0.7249|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+Best-so-far configuration:          98    mean value:      8855.884164
+Description of the best-so-far configuration:
+   .ID.  cbar lmax  alpha blink     t0     tf .PARENT.
+98   98 19.33   18 0.1438 4e-04 0.7169 0.0011       42
+
+# 2026-11-22 13:26:44 EST: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+       cbar lmax  alpha  blink     t0     tf
+98  19.3300   18 0.1438 0.0004 0.7169 0.0011
+102 14.5127   18 0.0763 0.0250 0.8471 0.0057
+89  17.3443   17 0.0018 0.0259 0.9404 0.0149
+137 12.6896   18 0.0036 0.0034 0.7342 0.0174
+# 2026-11-22 13:26:44 EST: Iteration 3 of 4
+# experimentsUsed: 978
+# remainingBudget: 1022
+# currentBudget: 511
+# nbConfigurations: 67
+# Markers:
+     x No test is performed.
+     c Configurations are discarded only due to capping.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+     . Alive configurations were already evaluated on this instance and nothing is discarded.
+     : All alive configurations are elite, but some need to be evaluated on this instance.
+
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|       Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+|x|          8|         67|        204|     26370.00000|         67|00:01:58|   NA|  NA|    NA|
+|x|          3|         67|        204|     13505.59298|        130|00:01:26|+0.09|0.54|0.9327|
+|x|          6|         67|        102|     17893.39532|        193|00:04:02|-0.02|0.32|1.0468|
+|x|          5|         67|        102|     13636.63779|        256|00:01:50|-0.02|0.24|0.7697|
+|=|          2|         67|        102|     11168.40081|        319|00:02:56|+0.02|0.22|0.7769|
+|=|          7|         67|        167|     10321.31732|        382|00:06:34|+0.03|0.19|0.7998|
+|=|          1|         67|        156|     12568.94297|        445|00:05:21|+0.01|0.15|0.8189|
+|=|          4|         67|        156|     11067.25388|        508|00:00:59|+0.01|0.13|0.7198|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+Best-so-far configuration:         156    mean value:      11067.25388
+Description of the best-so-far configuration:
+    .ID.   cbar lmax  alpha  blink     t0     tf .PARENT.
+156  156 17.026   17 0.0024 0.0249 1.2649 0.0103       89
+
+# 2026-11-22 13:51:53 EST: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+       cbar lmax  alpha  blink     t0     tf
+156 17.0260   17 0.0024 0.0249 1.2649 0.0103
+173 14.7236   17 0.0325 0.0145 1.0472 0.0284
+102 14.5127   18 0.0763 0.0250 0.8471 0.0057
+98  19.3300   18 0.1438 0.0004 0.7169 0.0011
+# 2026-11-22 13:51:53 EST: Iteration 4 of 4
+# experimentsUsed: 1486
+# remainingBudget: 514
+# currentBudget: 514
+# nbConfigurations: 60
+# Markers:
+     x No test is performed.
+     c Configurations are discarded only due to capping.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+     . Alive configurations were already evaluated on this instance and nothing is discarded.
+     : All alive configurations are elite, but some need to be evaluated on this instance.
+
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|       Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+|x|          9|         60|        251|     14138.00000|         60|00:02:29|   NA|  NA|    NA|
+|x|          1|         60|        273|     20050.50000|        116|00:04:27|-0.15|0.42|1.1281|
+|x|          4|         60|        273|     13552.14341|        172|00:00:53|-0.08|0.28|0.7038|
+|x|          6|         60|        273|     16835.85756|        228|00:03:35|-0.03|0.22|0.7475|
+|=|          3|         60|        273|     13596.92324|        284|00:01:23|-0.02|0.18|0.8112|
+|=|          2|         60|        261|     11551.34484|        340|00:02:52|-0.01|0.16|0.8303|
+|=|          5|         60|        261|     10024.91918|        396|00:01:43|-0.00|0.14|0.7102|
+|=|          7|         60|        261|     9531.648643|        452|00:06:10|+0.01|0.13|0.7228|
+|=|          8|         60|        261|     11404.02102|        508|00:01:46|+0.01|0.12|0.7511|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+Best-so-far configuration:         261    mean value:      11404.02102
+Description of the best-so-far configuration:
+    .ID.    cbar lmax  alpha  blink    t0     tf .PARENT.
+261  261 14.7687   18 0.0139 0.0102 0.929 0.0225      173
+
+# 2026-11-22 14:17:16 EST: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+       cbar lmax  alpha  blink     t0     tf
+261 14.7687   18 0.0139 0.0102 0.9290 0.0225
+248 15.4363   19 0.0275 0.0067 1.1001 0.0251
+273 14.5743   17 0.0253 0.0258 0.8889 0.0236
+156 17.0260   17 0.0024 0.0249 1.2649 0.0103
+# 2026-11-22 14:17:16 EST: Stopped because there is not enough budget left to race more than the minimum (4).
+# You may either increase the budget or set 'minNbSurvival' to a lower value.
+# Iteration: 5
+# nbIterations: 5
+# experimentsUsed: 1994
+# timeUsed: 0
+# remainingBudget: 6
+# currentBudget: 6
+# number of elites: 4
+# nbConfigurations: 4
+# Total CPU user time: 83085.57, CPU sys time: 110.251, Wall-clock time: 5861.891
+# 2026-11-22 14:17:16 EST: Starting post-selection:
+# Configurations selected: 261, 248, 273, 156, 173, 102.
+# Pending instances: 0, 0, 0, 0, 0, 0.
+# 2026-11-22 14:17:16 EST: seed: 1
+# Configurations: 6
+# Available experiments: 6
+# minSurvival: 1
+# Markers:
+     x No test is performed.
+     c Configurations are discarded only due to capping.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+     . Alive configurations were already evaluated on this instance and nothing is discarded.
+     : All alive configurations are elite, but some need to be evaluated on this instance.
+
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|       Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+|.|          9|          6|        261|     14156.00000|          0|00:00:00|   NA|  NA|    NA|
+|.|          7|          6|        261|     10117.37744|          0|00:00:00|+0.60|0.80|0.2566|
+|.|          6|          6|        261|     15631.25163|          0|00:00:00|-0.08|0.28|0.8162|
+|.|          4|          6|        261|     11862.29628|          0|00:00:00|-0.05|0.21|0.6165|
+|.|          5|          6|        261|     9663.110064|          0|00:00:00|-0.04|0.17|0.4949|
+|.|          1|          6|        261|     12386.09172|          0|00:00:00|+0.04|0.20|0.5285|
+|.|          2|          6|        261|     10801.71474|          0|00:00:00|-0.02|0.12|0.6051|
+|.|          8|          6|        261|     12749.37540|          0|00:00:00|-0.08|0.05|0.6722|
+|.|          3|          6|        261|     11404.02102|          0|00:00:00|-0.07|0.05|0.5923|
+|=|         10|          6|        156|     15064.00310|          6|00:00:37|-0.04|0.06|0.6190|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+Best-so-far configuration:         156    mean value:      15064.00310
+Description of the best-so-far configuration:
+    .ID.   cbar lmax  alpha  blink     t0     tf .PARENT.
+156  156 17.026   17 0.0024 0.0249 1.2649 0.0103       89
+
+# 2026-11-22 14:17:53 EST: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+       cbar lmax  alpha  blink     t0     tf
+156 17.0260   17 0.0024 0.0249 1.2649 0.0103
+261 14.7687   18 0.0139 0.0102 0.9290 0.0225
+248 15.4363   19 0.0275 0.0067 1.1001 0.0251
+273 14.5743   17 0.0253 0.0258 0.8889 0.0236
+# Total CPU user time: 83303.83, CPU sys time: 110.579, Wall-clock time: 5899.3
+final elite configurations written to ~/vrp-irace-cluster/results/irace/sisr/final_elites.tsv 

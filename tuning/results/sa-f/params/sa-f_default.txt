@@ -1,0 +1,2 @@
+resetfactor tfloor
+20 0.002
