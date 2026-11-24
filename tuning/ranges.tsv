@@ -4,7 +4,6 @@
 # Why: elites of the first pass (tuning/results/<method>-narrow/) sat at or near a range edge (irace-range-request.md, 2026-11-21).
 # columns (tab separated): method  parameter  type(i|r|i,log|r,log)  lower  upper
 ils-f	pmin	i	1	10
-ils-f	prange	i	1	12
 ils-f	failfactor	r,log	1	60
 ils-f	alpha	r	0.01	0.6
 sa-f	tfloor	r,log	0.0002	0.2
@@ -17,3 +16,14 @@ ga-f	mu	i	4	60
 ga-f	lambda	i	1	100
 ga-f	nclose	i	2	20
 ga-f	divafter	i,log	100	20000
+# rows below: ranges of the cluster passes after the first one (grasp alpha, de-f np/fmin, brkga-f pop, ils-f prange, vns-f kmax, tabu-f kmax) and of pso w1, sisr lmax, grasppr-f alpha; checked against params/<method>.txt of the final runs, 2026-11-24
+brkga-f	pop	i	6	80
+de-f	np	i	10	100
+de-f	fmin	r	0.01	0.8
+grasp	alpha	r,log	0.001	1
+grasppr-f	alpha	r	0.01	0.5
+ils-f	prange	i	1	30
+pso	w1	r	0.01	0.8
+sisr	lmax	i	5	40
+tabu-f	kmax	i	3	60
+vns-f	kmax	i	2	30
