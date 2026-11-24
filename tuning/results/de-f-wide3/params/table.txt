@@ -1,0 +1,5 @@
+de-f: 4 parameter(s)
+  np           i  default 20       range [10, 50]  population size
+  cr           r  default 0.9      range [0.5, 1]  crossover rate
+  fmin         r  default 0.4      range [0.1, 0.8]  smallest scale factor
+  fspan        r  default 0.5      range [0, 0.8]  scale factor = fmin + U(0, fspan)
