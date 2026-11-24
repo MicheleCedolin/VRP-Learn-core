@@ -1,0 +1,4 @@
+pmin         "--pmin "  i  (1, 10)
+prange       "--prange "  i  (1, 30)
+failfactor   "--failfactor "  r,log  (1, 60)
+alpha        "--alpha "  r  (0.01, 0.6)

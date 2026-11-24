@@ -1,0 +1,131 @@
+irace 4.5.1 | R version 4.5.3 (2026-03-11) 
+# 2026-11-23 10:54:03 EST: Reading parameter file '~/vrp-irace-cluster/results/irace/grasp/params/grasp.txt'.
+# 2026-11-23 10:54:45 EST: Read 1 configuration(s) from file '~/vrp-irace-cluster/results/irace/grasp/params/grasp_default.txt'
+# 2026-11-23 10:54:59 EST: Initialization
+# Elitist race
+# Elitist new instances: 1
+# Elitist limit: 2
+# nbIterations: 2
+# minNbSurvival: 2
+# nbParameters: 1
+# seed: 1
+# confidence level: 0.95
+# budget: 2000
+# mu: 5
+# deterministic: FALSE
+
+# 2026-11-23 10:55:00 EST: Iteration 1 of 2
+# experimentsUsed: 0
+# remainingBudget: 2000
+# currentBudget: 1000
+# nbConfigurations: 166
+# Markers:
+     x No test is performed.
+     c Configurations are discarded only due to capping.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+     . Alive configurations were already evaluated on this instance and nothing is discarded.
+     : All alive configurations are elite, but some need to be evaluated on this instance.
+
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|       Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+|x|          1|        164|         39|     26398.00000|        164|00:16:16|   NA|  NA|    NA|
+|x|          2|        164|         10|     13934.65757|        328|00:11:58|-0.02|0.49|1.0671|
+|x|          3|        164|         39|     9456.188795|        492|00:07:10|-0.03|0.31|1.0357|
+|x|          4|        164|         39|     7230.999155|        656|00:06:10|+0.08|0.31|0.9443|
+|-|          5|         93|         39|     5958.072366|        820|00:08:31|-0.10|0.12|1.0634|
+|=|          6|         93|         19|     9545.608553|        913|00:08:48|-0.06|0.12|1.0459|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+Best-so-far configuration:          19    mean value:      9545.608553
+Description of the best-so-far configuration:
+   .ID. alpha .PARENT.
+19   19 0.056       NA
+
+# 2026-11-23 11:53:57 EST: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+    alpha
+19 0.0560
+39 0.4353
+# 2026-11-23 11:53:57 EST: Iteration 2 of 2
+# experimentsUsed: 913
+# remainingBudget: 1087
+# currentBudget: 1087
+# nbConfigurations: 157
+# Markers:
+     x No test is performed.
+     c Configurations are discarded only due to capping.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+     . Alive configurations were already evaluated on this instance and nothing is discarded.
+     : All alive configurations are elite, but some need to be evaluated on this instance.
+
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|       Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+|x|          7|        157|        219|     6172.233721|        157|00:17:32|   NA|  NA|    NA|
+|x|          1|        157|        219|     16342.61686|        312|00:15:57|+0.37|0.69|0.5233|
+|x|          2|        157|        191|     11327.95484|        467|00:11:39|+0.06|0.37|0.9152|
+|x|          6|        157|        185|     15358.14329|        622|00:14:23|+0.08|0.31|0.8662|
+|-|          5|        101|        185|     12459.78767|        777|00:08:10|-0.11|0.11|1.0755|
+|=|          4|        101|        185|     10475.72810|        876|00:04:01|-0.09|0.09|0.8820|
+|=|          3|        101|        185|     9070.793507|        975|00:04:31|-0.10|0.06|0.9064|
+|=|          8|        101|        185|     11267.06932|       1076|00:05:34|-0.07|0.06|0.9163|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+Best-so-far configuration:         185    mean value:      11267.06932
+Description of the best-so-far configuration:
+    .ID. alpha .PARENT.
+185  185 0.056       19
+
+# 2026-11-23 13:15:50 EST: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+     alpha
+185 0.0560
+312 0.0557
+# 2026-11-23 13:15:50 EST: Iteration 3 of 3
+# experimentsUsed: 1989
+# remainingBudget: 11
+# currentBudget: 11
+# nbConfigurations: 3
+# Markers:
+     x No test is performed.
+     c Configurations are discarded only due to capping.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+     . Alive configurations were already evaluated on this instance and nothing is discarded.
+     : All alive configurations are elite, but some need to be evaluated on this instance.
+
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|       Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+|x|          9|          3|        312|     14270.00000|          3|00:01:05|   NA|  NA|    NA|
+|x|          8|          3|        312|     20410.00000|          4|00:00:41|+1.00|1.00|0.0000|
+|x|          7|          3|        312|     15680.63441|          5|00:01:44|+0.00|0.33|0.6667|
+|x|          2|          3|        320|     12103.60902|          6|00:01:14|-0.15|0.13|0.7197|
+|=|          3|          3|        320|     9811.124410|          7|00:00:35|-0.12|0.11|0.5652|
+|=|          1|          3|        312|     12611.20581|          8|00:01:39|-0.19|0.01|0.6516|
+|=|          4|          3|        312|     10888.95216|          9|00:00:26|-0.16|0.01|0.5448|
+|=|          5|          3|        312|     9636.128787|         10|00:00:44|-0.13|0.01|0.4681|
+|=|          6|          3|        185|     11601.50606|         11|00:01:23|-0.12|0.01|0.4994|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+Best-so-far configuration:         185    mean value:      11601.50606
+Description of the best-so-far configuration:
+    .ID. alpha .PARENT.
+185  185 0.056       19
+
+# 2026-11-23 13:25:25 EST: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+     alpha
+185 0.0560
+320 0.0559
+# 2026-11-23 13:25:25 EST: Stopped because budget is exhausted
+# Iteration: 4
+# nbIterations: 3
+# experimentsUsed: 2000
+# timeUsed: 0
+# remainingBudget: 0
+# currentBudget: 11
+# number of elites: 2
+# nbConfigurations: 3
+# Total CPU user time: 92042.69, CPU sys time: 184.405, Wall-clock time: 9076.823
+final elite configurations written to ~/vrp-irace-cluster/results/irace/grasp/final_elites.tsv 
