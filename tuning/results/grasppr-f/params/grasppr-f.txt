@@ -1,0 +1,3 @@
+alpha        "--alpha "  r  (0.01, 0.5)
+elite        "--elite "  i,log  (4, 1000)
+pevo         "--pevo "  r  (0, 1)

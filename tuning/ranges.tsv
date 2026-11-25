@@ -2,14 +2,10 @@
 # run_irace.sh rewrites the lines of tuning/results/<method>/params/<method>.txt for the rows below; every other parameter keeps the
 # range of the C++ table; the defaults (<method>_default.txt) are not changed and must lie inside the new range.
 # Why: elites of the first pass (tuning/results/<method>-narrow/) sat at or near a range edge (irace-range-request.md, 2026-11-21).
+# Later passes (2026-11-21 to 2026-11-25) widened a range again whenever the best elite or half of the elites lay within 10 % of a bound of our own choice (not at code limits or natural bounds); the rows below are the ranges of the 18 final runs, checked against tuning/results/<method>/params/<method>.txt.
 # columns (tab separated): method  parameter  type(i|r|i,log|r,log)  lower  upper
-ils-f	pmin	i	1	10
-ils-f	failfactor	r,log	1	60
-ils-f	alpha	r	0.01	0.6
 sa-f	tfloor	r,log	0.0002	0.2
 ta	th0	r,log	0.005	3
-tabu-f	beta0	r	0.5	2.5
-tabu-f	tmin	i	2	50
 tabu-f	tspan	i	0	50
 tabu-f	h	i	1	30
 ga-f	mu	i	4	60
@@ -18,12 +14,21 @@ ga-f	nclose	i	2	20
 ga-f	divafter	i,log	100	20000
 # rows below: ranges of the cluster passes after the first one (grasp alpha, de-f np/fmin, brkga-f pop, ils-f prange, vns-f kmax, tabu-f kmax) and of pso w1, sisr lmax, grasppr-f alpha; checked against params/<method>.txt of the final runs, 2026-11-24
 brkga-f	pop	i	6	80
-de-f	np	i	10	100
-de-f	fmin	r	0.01	0.8
 grasp	alpha	r,log	0.001	1
 grasppr-f	alpha	r	0.01	0.5
-ils-f	prange	i	1	30
 pso	w1	r	0.01	0.8
 sisr	lmax	i	5	40
 tabu-f	kmax	i	3	60
 vns-f	kmax	i	2	30
+de-f	np	i,log	4	400
+de-f	fmin	r	0	0.8
+ils-f	pmin	i	1	20
+ils-f	prange	i	1	60
+ils-f	failfactor	r,log	0.2	2000
+ils-f	alpha	r,log	0.001	0.6
+tabu-f	beta0	r	0.2	2.5
+tabu-f	betadiv	r	2	10
+tabu-f	tmin	i	1	50
+tabu-f	divfactor	r,log	0.1	10
+grasppr-f	elite	i,log	4	1000
+grasppr-f	pevo	r	0	1

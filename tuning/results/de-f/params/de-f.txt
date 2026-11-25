@@ -1,0 +1,4 @@
+np           "--np "  i,log  (4, 400)
+cr           "--cr "  r  (0.5, 1)
+fmin         "--fmin "  r  (0, 0.8)
+fspan        "--fspan "  r  (0, 0.8)
